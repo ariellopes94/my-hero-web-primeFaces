@@ -1,0 +1,99 @@
+
+
+.header {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top:0;
+
+  z-index: 1;
+  background: linear-gradient(208.07deg,#03a9f4, #2196F3);
+ 
+  width: 100%;
+	height: 15em;
+}
+
+
+.logoImagem{
+   margin-top: 3em;
+   max-width: 200px;
+   max-height: 150px;
+   width: auto;
+   height: auto;
+}
+
+
+
+.icones{
+ font-size: 50px;
+ text-align: center;
+ color: #2196F3;
+ 
+}
+
+.circulo{
+
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color:#ffff;
+}
+
+.containnerLogin{
+  z-index : 1; top : 13rem; position: relative;
+ }
+
+.arredondarBordas{
+  border-radius: 10px;
+}
+
+.iconsBotao{
+  font-size: 0em;
+  background: #2196f3;
+  color: #ffffff;
+}
+
+.fontLogin{
+  color:#2196f3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+p-card{
+  background: #000001 !important;
+}
+
+
+
+
+
+.navigation2 {
+  left: 0;
+  max-height: 75px;
+  position: absolute;
+  right: 0;
+  top: 400px;
+  z-index: 1;
+  background-color: red;
+ 
+
+  width: 100%;
+	height: 100%;
+}
+
+

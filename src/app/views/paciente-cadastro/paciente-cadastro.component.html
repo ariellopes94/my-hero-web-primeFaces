@@ -1,0 +1,34 @@
+
+<!-- 
+<h3 class="first">Basic</h3>
+<p-steps [model]="items"></p-steps>
+-->
+<h3>Clickable</h3>
+<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+
+
+<div>
+<button pButton type="button" label="<" class="p-d-flex p-jc-start"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
+
+<p-button label=">" class="p-d-flex p-jc-end" (click)="alterar(+1)" *ngIf="activeIndex < 3"></p-button>
+
+</div>
+
+
+<div *ngIf="activeIndex == 0" >
+    COLUNA 1
+</div>
+
+
+<div *ngIf="activeIndex == 1" >
+    COLUNA 2
+</div>
+
+
+<div *ngIf="activeIndex == 2" >
+    COLUNA 3
+</div>
+
+<div *ngIf="activeIndex == 3" >
+    COLUNA 4
+</div>
