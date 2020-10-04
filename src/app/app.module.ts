@@ -17,6 +17,8 @@ import { CardModule } from 'primeng/card';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
+import { DialogModule } from 'primeng/dialog';
+import { SidebarModule } from 'primeng/sidebar';
 
 
 //Leitor qr code
@@ -45,7 +47,9 @@ import { HttpClientModule } from '@angular/common/http';
     InputTextModule,
     InputMaskModule,
     ZXingScannerModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule,
+    SidebarModule,
     
   ],
   providers: [],
