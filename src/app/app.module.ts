@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -8,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './views/login/login.component';
 import { PacienteCadastroComponent } from './views/paciente-cadastro/paciente-cadastro.component';
+import { LeitorQrCodeComponent } from './views/leitor-qr-code/leitor-qr-code.component';
 
 //PrimeFaces
 import { StepsModule } from 'primeng/steps';
@@ -19,12 +19,19 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 
 
+//Leitor qr code
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PacienteCadastroComponent,
-    PacienteFichaComponent
+    PacienteFichaComponent,
+    LeitorQrCodeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,9 @@ import { InputMaskModule } from 'primeng/inputmask';
     CardModule,
     RippleModule,
     InputTextModule,
-    InputMaskModule
+    InputMaskModule,
+    ZXingScannerModule,
+    HttpClientModule
     
   ],
   providers: [],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   //classe
 inputTempSenha:string;
-  constructor(private primengConfig: PrimeNGConfig) { }
+
+  constructor(private primengConfig: PrimeNGConfig, private router: Router) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -39,23 +41,30 @@ inputTempSenha:string;
   this.liberarCamposLogin =true;
  }
 
- voltarMenu():void{
-   
-  this.alinanharContainer = `
-  transition-duration: 1s;
-  transition-timing-function: linear;`
+  voltarMenu():void{
+    
+    this.alinanharContainer = `
+    transition-duration: 1s;
+    transition-timing-function: linear;`
 
-this.possitionLogoTransition =`margin-top : 1rem;
-  transition-duration: 1s;
+  this.possitionLogoTransition =`margin-top : 1rem;
+    transition-duration: 1s;
+    
+    margin-top: 3em;
+    max-width: 200px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    `;
+
+    this.liberarCamposLogin =false;
+  }
   
-  margin-top: 3em;
-  max-width: 200px;
-  max-height: 150px;
-  width: auto;
-  height: auto;
-  `;
+  navigateToLeitorQr(): void{
+    this.router.navigate(['/leitor-qr-code']);
+  }
 
-  this.liberarCamposLogin =false;
- }
-
+  navigateToPacienteCreate(): void {
+    this.router.navigate(['/paciente-cadastro']);
+  }
 }
