@@ -1,5 +1,5 @@
 
-<div class="toolbar" role="banner" *ngIf="displayModal == false">
+<div class="toolbar" role="banner" *ngIf="displayModal === false && displayModalQrcode=== false">
   <img width="40" alt="My hero Logo" src="assets/logo-primengtest.png" />
 
   <span>MY HERO</span>
@@ -114,12 +114,13 @@ Voltar
 
 -->
 <!--
-<p-button type="button" (click)="displayModalQrcode = true" icon="pi pi-arrow-up"></p-button>
 
+<p-button type="button" (click)="displayModalQrcode = true" icon="pi pi-arrow-up"></p-button>
+--->
   </div>
 </div>
 
--->
+
 <!--
 
     <router-outlet></router-outlet>

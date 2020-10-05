@@ -14,14 +14,14 @@ export class LeitorQrCodeComponent implements OnInit {
 
   //model
   displayModal: boolean;
-  displayModalQrcode:boolean;
+  displayModalQrcode:boolean =false ;
 
 
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.showModalDialog();
+    this.displayModal = true;
   }
 
   
