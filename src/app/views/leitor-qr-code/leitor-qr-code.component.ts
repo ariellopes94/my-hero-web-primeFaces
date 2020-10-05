@@ -13,10 +13,14 @@ export class LeitorQrCodeComponent implements OnInit {
   qrResultString: string;
 
   //model
-  displayModal: boolean;
+  displayModal: boolean =false;
   displayModalQrcode:boolean =false ;
+  botaoIrAteWebSite :boolean = true;
 
+  subtraindoString : string;
+  alterarConformeSiteOuTexo : string = "Website";
 
+  
 
   constructor(private router: Router) { }
 
@@ -33,11 +37,17 @@ export class LeitorQrCodeComponent implements OnInit {
     this.qrResultString = resultString;
 
     this.displayModalQrcode = true;
+
+    this.subtraindoString = this.qrResultString.substring(0,4);
+
+    if(!(this.subtraindoString == "http")){
+      this.alterarConformeSiteOuTexo = "Texto";
+     this.botaoIrAteWebSite = false;
+    }
   }
 
   showModalDialog() {
     this.displayModal = true;
-    console.log("VEIOOO")
   }
 
   showModalDialogQrCodeLido() {

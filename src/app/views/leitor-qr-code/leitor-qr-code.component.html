@@ -89,11 +89,12 @@ Voltar
   <div class="p-text-center">
       <i class="pi-globe pi" style="font-size: 4rem; color:#ffff; position : relative; top: 0.2em;"></i>
   </div>
-    <div style="color:#f5f6fa; font-size: 1em; top: 2em; position : relative; top: 2.0em;">Website:</div>
+    <div style="color:#f5f6fa; font-size: 1em; top: 2em; position : relative; top: 2.0em;">{{alterarConformeSiteOuTexo}}:</div>
     <br>
     <div style="font-size: 1.4em; position : relative; top: 1em;" > {{qrResultString}}</div>
     <div class="p-grid  p-justify-center " style="left: 0; position: fixed; right: 0; bottom: 2em;"> 
-      <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded" [style]="{'background':'#c3002f'}" (click)="abrir()"></button>
+      <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded"
+       [style]="{'background':'#c3002f'}" (click)="abrir()" *ngIf="botaoIrAteWebSite ==true"></button>
     </div>
   
 </p-sidebar>
