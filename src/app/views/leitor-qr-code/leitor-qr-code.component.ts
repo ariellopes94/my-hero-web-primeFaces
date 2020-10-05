@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leitor-qr-code',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeitorQrCodeComponent implements OnInit {
 
-  valueQrcode:string;
+  valueQrcode: string;
   qrResultString: string;
 
   //model
@@ -17,7 +18,7 @@ export class LeitorQrCodeComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.showModalDialog();
@@ -36,11 +37,24 @@ export class LeitorQrCodeComponent implements OnInit {
 
   showModalDialog() {
     this.displayModal = true;
+    console.log("VEIOOO")
   }
 
   showModalDialogQrCodeLido() {
     this.displayModalQrcode = true;
   }
   
+  abrir(){
+    window.open(this.qrResultString);
+  }
+
+  navigateToLogin(): void{
+    this.router.navigate(['/']);
+  }
   
+  testMenu() {
+   console.log("dsads")
+  }
+
+
 }

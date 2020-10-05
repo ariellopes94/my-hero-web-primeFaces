@@ -1,16 +1,65 @@
-/* AUEMTAR TAMANHO DO BOTAO 100%
-button {
-  min-width: 10rem;
-  margin-right: .5rem;
+
+.gifQrcode{
+  margin-top: -2em;
 }
 
-@media screen and (max-width: 960px) {
-  button {
-      width: 100%;
-      margin-bottom: .5rem;
+@media(max-width: 640px){
+  .gifQrcode{
+    margin-top: 0em;
+    width: 310px
+
   }
-}
+ }
+
+/*
+@media(max-width: 640px){
+  .gifQrcode{
+    margin-top: 15em;
+
+  }
+ }
+
+   telas como TABLETS
+ @media(min-width: 720px){
+  .gifQrcode{
+    margin-top: 15em;
+
+  }
+ }
+
+    telas como monitores de NOTEBOOKS  
+ @media(min-width: 960px){
+  .gifQrcode{
+    margin-top: 15em;
+
+  }
+ }
+
+  tela como monitores de desktop 
+ @media(min-width: 1080px){
+  .gifQrcode{
+    margin-top: 15em;
+
+  }
+ }
+/*
+
+
+
+/*
+@media screen and (max-width: 960px) {
+ 
+  .gifQrcode{
+
+    position: fixed;
+    
+    z-index: 3;
+    top: 0;
+
+  }
+  }
 */
+
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
@@ -50,7 +99,8 @@ button {
     background: linear-gradient(208.07deg,#03a9f4, #2196F3);
     color: white;
     font-weight: 600;
-    z-index: 1;
+    z-index: 2;
+   
   }
 
   .toolbar img {

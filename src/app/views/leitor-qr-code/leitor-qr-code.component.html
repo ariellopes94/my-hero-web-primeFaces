@@ -1,17 +1,25 @@
 
-<div class="toolbar" role="banner">
+<div class="toolbar" role="banner" *ngIf="displayModal == false">
   <img width="40" alt="My hero Logo" src="assets/logo-primengtest.png" />
+
   <span>MY HERO</span>
 </div>
 
 
 
 
+
 <div class="p-grid  p-justify-center" style="z-index: 1; position: relative; top: 2em;">
-  <div class="p-col-12 p-md-12 p-lg-12"></div>
+  <div class="p-col-12 p-md-12 p-lg-12 p-grid  p-justify-center " *ngIf="displayModal == false">
+    <img  src="assets/gif/qrscananimation.gif" class="gifQrcode"  >
+  </div>
+<!-- IMAGEM-->
 
+  
 
-  <div class="content" role="main">
+<!----->
+
+  <div class="content" role="main" style="margin-top: 15em;"> 
 
 
 
@@ -21,34 +29,22 @@
 
 
     </div> -->
-    <h1> VALOR QR - {{valueQrcode}}</h1>
+    
     <!-- Terminal -->
     <div class="terminal" [ngSwitch]="selection.value">
 
       <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
 
-      <section class="results" *ngIf="qrResultString">
-        <div>
-          <small>Result</small>
-          <strong>{{ qrResultString }}</strong>
-        </div>
-        <button mat-icon-button (click)="clearResult()">&times;</button>
-      </section>
-      <pre *ngSwitchDefault> </pre>
-      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-      <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-      <pre *ngSwitchCase="'test'">ng test</pre>
-      <pre *ngSwitchCase="'build'">ng build --prod</pre>
+      
     </div>
 
 <br>
 
-<i class="pi pi-arrow-circle-left"  style="font-size: 3rem; color: #09a6f4"></i>
+<i class="pi pi-arrow-circle-left"  style="font-size: 3rem; color: #09a6f4" (click)="navigateToLogin()"></i>
 Voltar
 
-    <h5>Modal compatibilidade</h5>
-    <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button>
+   
+    <!--<p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
     <p-dialog header="Compatibilidade" [(visible)]="displayModal" [modal]="true" [style]="{width: '90vw'}" [baseZIndex]="10000"
       [draggable]="false" [resizable]="false">
       <h2 style="color:#a4c639">Android <i class="pi pi-android" style="font-size: 2rem; color:#a4c639"></i></h2> 
@@ -76,23 +72,56 @@ Voltar
     
 
 
-
-
-
-    <h5>Modal QR CODE LIDO</h5>
-<p-sidebar [(visible)]="displayModalQrcode" position="bottom" [baseZIndex]="10000" [style]="{'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)'}">
-  <h1 style="font-weight:normal">Bottom Sidebar</h1>
-  <p-button type="button" (click)="displayModalQrcode = false" label="Save" styleClass="p-button-success"></p-button>
-  <p-button type="button" (click)="displayModalQrcode = false" label="Cancel" styleClass="p-button-secondary"></p-button>
+<p-sidebar [(visible)]="displayModalQrcode" position="bottom" [baseZIndex]="10000" [style]="{'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)','height':'100%'}">
+  <h1 style="font-weight:normal" class="p-text-center">Resultado</h1>
+  
+  
+  <!--
+  <header class="header" style="left: 0; position: fixed; right: 0; bottom: 0px; z-index: 1;
+       background:#a4c639; width: 100%; height: 20%;" >
+   ADICIONAR LOGO
+    <p style="color:#f5f6fa">URL do código QR</p>
+    <div class="p-grid  p-justify-center " > 
+      <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded" [style]="{'background':'#c3002f'}" (click)="abrir()"></button>
+    </div>
+  </header>
+-->
+  <div class="p-text-center">
+      <i class="pi-globe pi" style="font-size: 4rem; color:#ffff; position : relative; top: 0.2em;"></i>
+  </div>
+    <div style="color:#f5f6fa; font-size: 1em; top: 2em; position : relative; top: 2.0em;">Website:</div>
+    <br>
+    <div style="font-size: 1.4em; position : relative; top: 1em;" > {{qrResultString}}</div>
+    <div class="p-grid  p-justify-center " style="left: 0; position: fixed; right: 0; bottom: 2em;"> 
+      <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded" [style]="{'background':'#c3002f'}" (click)="abrir()"></button>
+    </div>
+  
 </p-sidebar>
 
 
+
+<!--
+    <h5>Modal QR CODE LIDO</h5>
+<p-sidebar [(visible)]="displayModalQrcode" position="bottom" [baseZIndex]="10000" [style]="{'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)'}">
+  <h1 style="font-weight:normal">Bottom Sidebar</h1>
+  <b>URL do código QR</b>
+    <p style="color:#f5f6fa">URL do código QR</p>
+    <div class="p-grid  p-justify-center " > 
+      <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded" [style]="{'background':'#c3002f'}" (click)="abrir()"></button>
+    </div>
+
+</p-sidebar>
+
+-->
+<!--
 <p-button type="button" (click)="displayModalQrcode = true" icon="pi pi-arrow-up"></p-button>
 
   </div>
 </div>
 
-
-
+-->
+<!--
 
     <router-outlet></router-outlet>
+
+-->
