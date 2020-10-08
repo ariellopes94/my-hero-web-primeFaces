@@ -4,31 +4,26 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-leitor-qr-code',
   templateUrl: './leitor-qr-code.component.html',
-  styleUrls: ['./leitor-qr-code.component.css'],
- 
+  styleUrls: ['./leitor-qr-code.component.css']
 })
 export class LeitorQrCodeComponent implements OnInit {
-
   valueQrcode: string;
   qrResultString: string;
 
-  //model
-  displayModal: boolean =false;
-  displayModalQrcode:boolean =false ;
-  botaoIrAteWebSite :boolean = true;
+  // model
+  displayModal = false;
+  displayModalQrcode = false;
+  botaoIrAteWebSite = true;
 
-  subtraindoString : string;
-  alterarConformeSiteOuTexo : string = "Website";
+  subtraindoString: string;
+  alterarConformeSiteOuTexo = 'Website';
 
-  
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.displayModal = true;
   }
 
-  
   clearResult(): void {
     this.qrResultString = null;
   }
@@ -38,12 +33,11 @@ export class LeitorQrCodeComponent implements OnInit {
 
     this.displayModalQrcode = true;
 
-    
-    this.subtraindoString = this.qrResultString.substring(0,4);
+    this.subtraindoString = this.qrResultString.substring(0, 4);
 
-    if(!(this.subtraindoString == "http" || this.subtraindoString == "www.")){
-      this.alterarConformeSiteOuTexo = "Texto";
-     this.botaoIrAteWebSite = false;
+    if (!(this.subtraindoString == 'http' || this.subtraindoString == 'www.')) {
+      this.alterarConformeSiteOuTexo = 'Texto';
+      this.botaoIrAteWebSite = false;
     }
   }
 
@@ -54,18 +48,16 @@ export class LeitorQrCodeComponent implements OnInit {
   showModalDialogQrCodeLido() {
     this.displayModalQrcode = true;
   }
-  
-  abrir(){
+
+  abrir() {
     window.open(this.qrResultString);
   }
 
-  navigateToLogin(): void{
+  navigateToLogin(): void {
     this.router.navigate(['/']);
   }
-  
+
   testMenu() {
-   console.log("dsads")
+    console.log('dsads');
   }
-
-
 }

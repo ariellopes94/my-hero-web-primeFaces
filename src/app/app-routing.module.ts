@@ -5,26 +5,27 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PacienteFichaComponent } from './views/paciente-ficha/paciente-ficha.component';
 
-const routes: Routes = [{
-
-  path: "" ,
-  component: LoginComponent,
- },
- {
-  path: "ficha-paciente" ,
-  component: PacienteFichaComponent
-},
-{
-  path:"leitor-qr-code",
-  component: LeitorQrCodeComponent
-},
-{
-  path:"paciente-cadastro",
-  component: PacienteCadastroComponent
-}];
+const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'ficha-paciente',
+    component: PacienteFichaComponent
+  },
+  {
+    path: 'leitor-qr-code',
+    component: LeitorQrCodeComponent
+  },
+  {
+    path: 'paciente-cadastro',
+    component: PacienteCadastroComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

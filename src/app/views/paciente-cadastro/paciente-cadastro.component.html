@@ -1,11 +1,57 @@
+<p-card>
+    Content
+</p-card>
+
+
+
+
+<div class="badges">
+    <span class="p-tag">Primary</span>
+    <span class="p-tag p-tag-success">Success</span>
+    <span class="p-tag p-tag-info">Info</span>
+    <span class="p-tag p-tag-warning">Warning</span>
+    <span class="p-tag p-tag-danger">Danger</span>
+</div>
+
+
+
+
+<div class="card">
+    
+    <p-steps [model]="items" [readonly]="true"></p-steps>
+</div>
+<router-outlet></router-outlet>
+
+<h3 class="first">Basic</h3>
+<p-steps [model]="items"></p-steps>
+
+<h3>Clickable</h3>
+<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
 
 <!-- 
 <h3 class="first">Basic</h3>
 <p-steps [model]="items"></p-steps>
 -->
-<h3>Clickable</h3>
-<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
 
+
+<!--
+    
+<div class="p-grid ">
+    <div class="p-col-8 p-md-8 p-lg-8"> 
+
+        <p-card class="p-justify-center">
+            <p-steps [model]="items" [readonly]="true"></p-steps>
+        </p-card>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">B</div>
+    <div class="p-col-12 p-md-6 p-lg-3">C</div>
+    <div class="p-col-12 p-md-6 p-lg-3">D</div>
+</div>
+
+
+<router-outlet></router-outlet>
+
+<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
 
 <div>
 <button pButton type="button" label="<" class="p-d-flex p-jc-start"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
@@ -32,3 +78,5 @@
 <div *ngIf="activeIndex == 3" >
     COLUNA 4
 </div>
+
+-->

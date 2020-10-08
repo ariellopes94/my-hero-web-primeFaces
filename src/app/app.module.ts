@@ -20,12 +20,12 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { DialogModule } from 'primeng/dialog';
 import { SidebarModule } from 'primeng/sidebar';
 
-
 //Leitor qr code
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 import { HttpClientModule } from '@angular/common/http';
-
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -50,9 +50,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     DialogModule,
     SidebarModule,
-    
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
