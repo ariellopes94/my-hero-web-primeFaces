@@ -4,7 +4,20 @@
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
         </div>
 
+<form #usuarioForm="ngForm" (ngSubmit)="salvar(usuarioForm)">
 
+    <label >Nome</label>
+    <input name="nome" ngModel>
+
+    <label>Email</label>
+    <input name="email" ngModel>
+
+    <label >Senha</label>
+    <input name="senha" ngModel>
+
+    <button type="submit">SALVAR</button>
+
+</form>
         <div *ngIf="activeIndex == 0" >
             COLUNA 1
         </div>

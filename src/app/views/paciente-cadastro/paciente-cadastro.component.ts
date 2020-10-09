@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 
@@ -47,5 +48,9 @@ export class PacienteCadastroComponent implements OnInit {
     this.activeIndex += numero;
 
     console.log(this.activeIndex);
+  }
+
+  salvar(form: Form): void {
+    console.log(form);
   }
 }

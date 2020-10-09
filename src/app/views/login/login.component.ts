@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { PrimeNGConfig } from "primeng/api";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   //CSS
@@ -59,10 +59,10 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToLeitorQr(): void {
-    this.router.navigate(["/leitor-qr-code"]);
+    this.router.navigate(['/leitor-qr-code']);
   }
 
   navigateToPacienteCreate(): void {
-    this.router.navigate(["/paciente-cadastro"]);
+    this.router.navigate(['/paciente-cadastro']);
   }
 }
