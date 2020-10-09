@@ -2,7 +2,7 @@
   "name": "my-hero-web",
   "short_name": "my-hero-web",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background": "linear-gradient(208.07deg,#03a9f4, #2196F3)",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
