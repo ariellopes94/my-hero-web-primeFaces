@@ -33,13 +33,13 @@ export class PacienteCadastroComponent implements OnInit {
         command: (event: any) => {
           this.activeIndex = 2;
         }
-      },
+      } /*,
       {
         label: 'Confirmation',
         command: (event: any) => {
           this.activeIndex = 3;
         }
-      }
+      }*/
     ];
   }
 

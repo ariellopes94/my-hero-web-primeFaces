@@ -1,129 +1,131 @@
+<div class="container">
+  <div class="toolbar" role="banner" *ngIf="displayModal === false && displayModalQrcode=== false">
+    <img width="40" alt="My hero Logo" src="assets/logo-primengtest.png" />
 
-<div class="toolbar" role="banner" *ngIf="displayModal === false && displayModalQrcode=== false">
-  <img width="40" alt="My hero Logo" src="assets/logo-primengtest.png" />
-
-  <span>MY HERO</span>
-</div>
-
-
-
-
-
-<div class="p-grid  p-justify-center" style="z-index: 1; position: relative; top: 2em;">
-  <div class="p-col-12 p-md-12 p-lg-12 p-grid  p-justify-center " *ngIf="displayModal == false">
-    <img  src="assets/gif/qrscananimation.gif" class="gifQrcode"  >
+    <span>MY HERO</span>
   </div>
-<!-- IMAGEM-->
-
-  
-
-<!----->
-
-  <div class="content" role="main" style="margin-top: 15em;"> 
 
 
 
-    <input type="hidden" #selection>
-
-    <!--<div class="card-container">
 
 
-    </div> -->
+  <div class="p-grid  p-justify-center" style="z-index: 1; position: relative; top: 2em;">
+    <div class="p-col-12 p-md-12 p-lg-12 p-grid  p-justify-center " *ngIf="displayModal == false">
+      <img  src="assets/gif/qrscananimation.gif" class="gifQrcode"  >
+    </div>
+  <!-- IMAGEM-->
+
     
-    <!-- Terminal -->
-    <div class="terminal" [ngSwitch]="selection.value">
 
-      <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+  <!----->
+
+    <div class="content" role="main" style="margin-top: 15em;"> 
+
+
+
+      <input type="hidden" #selection>
+
+      <!--<div class="card-container">
+
+
+      </div> -->
+      
+      <!-- Terminal -->
+      <div class="terminal" [ngSwitch]="selection.value">
+
+        <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+
+        
+      </div>
+
+  <br>
+
+  <i class="pi pi-arrow-circle-left"  style="font-size: 3rem; color: #09a6f4" (click)="navigateToLogin()"></i>
+  Voltar
+
+    
+      <!--<p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
+      <p-dialog header="Compatibilidade" [(visible)]="displayModal" [modal]="true" [style]="{width: '90vw'}" [baseZIndex]="10000"
+        [draggable]="false" [resizable]="false">
+        <h2 style="color:#a4c639">Android <i class="pi pi-android" style="font-size: 2rem; color:#a4c639"></i></h2> 
+        <p class="p-m-0">
+          Este recurso até o momento foi testado apenas no <b>Google Chrome <i class="fab fa-chrome"></i>.</b><br>
+          É indicado seu uso para evitar possíveis incompatibilidades.
+        </p>
+        <br>
+        <h2 style="color:#b3b3b3">IOS <i class="pi pi-apple" style="font-size: 2rem; color:#b3b3b3;"></i></h2>
+        <p class="p-m-0" >
+          Em dispositivos iOS, o acesso à câmera funciona apenas no 
+          <b>Safari</b>&nbsp;<i class="fab fa-safari"></i> nativo e não em outros navegadores (Chrome, ...). 
+          Esta não é uma restrição deste componente, mas do suporte WebRTC limitado da Apple.
+        </p>
+        <br>
+        <h2 > <i class="pi pi-android" style="font-size: 2rem; color:#a4c639"></i> <i class="pi pi-apple" style="font-size: 2rem; color:#b3b3b3;"></i></h2>
+        <p class="p-m-0" >
+          Ambos podem utilizarem qualquer leitor de <b>Qr code</b>;
+        </p>
+        <ng-template pTemplate="footer">
+          <p-button icon="pi  pi-check" (click)="displayModal=false" label="Ok" [style]="{'background':'#2196f3'}"></p-button>
+        </ng-template>
+      </p-dialog>
 
       
-    </div>
 
-<br>
 
-<i class="pi pi-arrow-circle-left"  style="font-size: 3rem; color: #09a6f4" (click)="navigateToLogin()"></i>
-Voltar
-
-   
-    <!--<p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
-    <p-dialog header="Compatibilidade" [(visible)]="displayModal" [modal]="true" [style]="{width: '90vw'}" [baseZIndex]="10000"
-      [draggable]="false" [resizable]="false">
-      <h2 style="color:#a4c639">Android <i class="pi pi-android" style="font-size: 2rem; color:#a4c639"></i></h2> 
-      <p class="p-m-0">
-        Este recurso até o momento foi testado apenas no <b>Google Chrome <i class="fab fa-chrome"></i>.</b><br>
-         É indicado seu uso para evitar possíveis incompatibilidades.
-      </p>
-      <br>
-      <h2 style="color:#b3b3b3">IOS <i class="pi pi-apple" style="font-size: 2rem; color:#b3b3b3;"></i></h2>
-      <p class="p-m-0" >
-        Em dispositivos iOS, o acesso à câmera funciona apenas no 
-        <b>Safari</b>&nbsp;<i class="fab fa-safari"></i> nativo e não em outros navegadores (Chrome, ...). 
-        Esta não é uma restrição deste componente, mas do suporte WebRTC limitado da Apple.
-      </p>
-      <br>
-      <h2 > <i class="pi pi-android" style="font-size: 2rem; color:#a4c639"></i> <i class="pi pi-apple" style="font-size: 2rem; color:#b3b3b3;"></i></h2>
-      <p class="p-m-0" >
-        Ambos podem utilizarem qualquer leitor de <b>Qr code</b>;
-      </p>
-      <ng-template pTemplate="footer">
-        <p-button icon="pi  pi-check" (click)="displayModal=false" label="Ok" [style]="{'background':'#2196f3'}"></p-button>
-      </ng-template>
-    </p-dialog>
-
+  <p-sidebar [(visible)]="displayModalQrcode" position="bottom" [baseZIndex]="10000" [style]="{'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)','height':'100%'}">
+    <h1 style="font-weight:normal" class="p-text-center">Resultado</h1>
     
+    
+    <!--
+    <header class="header" style="left: 0; position: fixed; right: 0; bottom: 0px; z-index: 1;
+        background:#a4c639; width: 100%; height: 20%;" >
+    ADICIONAR LOGO
+      <p style="color:#f5f6fa">URL do código QR</p>
+      <div class="p-grid  p-justify-center " > 
+        <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded" [style]="{'background':'#c3002f'}" (click)="abrir()"></button>
+      </div>
+    </header>
+  -->
+    <div class="p-text-center">
+        <i class="pi-globe pi" style="font-size: 4rem; color:#ffff; position : relative; top: 0.2em;"></i>
+    </div>
+      <div style="color:#f5f6fa; font-size: 1em; top: 2em; position : relative; top: 2.0em;">{{alterarConformeSiteOuTexo}}:</div>
+      <br>
+      <div style="font-size: 1.4em; position : relative; top: 1em;" > {{qrResultString}}</div>
+      <div class="p-grid  p-justify-center " style="left: 0; position: fixed; right: 0; bottom: 2em;"> 
+        <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded"
+        [style]="{'background':'#c3002f'}" (click)="abrir()" *ngIf="botaoIrAteWebSite ==true"></button>
+      </div>
+    
+  </p-sidebar>
 
 
-<p-sidebar [(visible)]="displayModalQrcode" position="bottom" [baseZIndex]="10000" [style]="{'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)','height':'100%'}">
-  <h1 style="font-weight:normal" class="p-text-center">Resultado</h1>
-  
+
+  <!--
+      <h5>Modal QR CODE LIDO</h5>
+  <p-sidebar [(visible)]="displayModalQrcode" position="bottom" [baseZIndex]="10000" [style]="{'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)'}">
+    <h1 style="font-weight:normal">Bottom Sidebar</h1>
+    <b>URL do código QR</b>
+      <p style="color:#f5f6fa">URL do código QR</p>
+      <div class="p-grid  p-justify-center " > 
+        <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded" [style]="{'background':'#c3002f'}" (click)="abrir()"></button>
+      </div>
+
+  </p-sidebar>
+
+  -->
   
   <!--
-  <header class="header" style="left: 0; position: fixed; right: 0; bottom: 0px; z-index: 1;
-       background:#a4c639; width: 100%; height: 20%;" >
-   ADICIONAR LOGO
-    <p style="color:#f5f6fa">URL do código QR</p>
-    <div class="p-grid  p-justify-center " > 
-      <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded" [style]="{'background':'#c3002f'}" (click)="abrir()"></button>
+  <p-button type="button" (click)="onCodeResult('http.')" icon="pi pi-arrow-up"></p-button>
+  -->
     </div>
-  </header>
--->
-  <div class="p-text-center">
-      <i class="pi-globe pi" style="font-size: 4rem; color:#ffff; position : relative; top: 0.2em;"></i>
   </div>
-    <div style="color:#f5f6fa; font-size: 1em; top: 2em; position : relative; top: 2.0em;">{{alterarConformeSiteOuTexo}}:</div>
-    <br>
-    <div style="font-size: 1.4em; position : relative; top: 1em;" > {{qrResultString}}</div>
-    <div class="p-grid  p-justify-center " style="left: 0; position: fixed; right: 0; bottom: 2em;"> 
-      <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded"
-       [style]="{'background':'#c3002f'}" (click)="abrir()" *ngIf="botaoIrAteWebSite ==true"></button>
-    </div>
-  
-</p-sidebar>
 
 
+  <!--
 
-<!--
-    <h5>Modal QR CODE LIDO</h5>
-<p-sidebar [(visible)]="displayModalQrcode" position="bottom" [baseZIndex]="10000" [style]="{'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)'}">
-  <h1 style="font-weight:normal">Bottom Sidebar</h1>
-  <b>URL do código QR</b>
-    <p style="color:#f5f6fa">URL do código QR</p>
-    <div class="p-grid  p-justify-center " > 
-      <button pButton pRipple type="button" icon="pi pi-globe"  label="Ir ao website" class="p-button-rounded" [style]="{'background':'#c3002f'}" (click)="abrir()"></button>
-    </div>
+      <router-outlet></router-outlet>
 
-</p-sidebar>
+  -->
 
--->
- 
-<!--
-<p-button type="button" (click)="onCodeResult('http.')" icon="pi pi-arrow-up"></p-button>
--->
   </div>
-</div>
-
-
-<!--
-
-    <router-outlet></router-outlet>
-
--->

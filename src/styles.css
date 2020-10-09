@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@media (min-width: 1200px){
+    .container {
+     width: 1170px;
+     margin: 0 auto;
+    }
+}
+
+
+/*
+@media(max-width: 640px){
+    h1{
+          color:blue !important;
+        }
+   }
+
+      //  telas como TABLETS 
+   @media(min-width: 720px){
+    h1{
+          color:red !important;
+        }
+   }
+
+      // telas como monitores de NOTEBOOKS
+   @media(min-width: 960px){
+    h1{
+          color:black !important;
+        }
+   }
+
+    // tela como monitores de desktop 
+   @media(min-width: 1080px){
+    h1{
+          color:lawngreen !important;
+        }
+   }
+   */
