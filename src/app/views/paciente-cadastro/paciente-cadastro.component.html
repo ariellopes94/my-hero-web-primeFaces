@@ -1,23 +1,100 @@
 <div class="container">
-    <div class="p-grid">
-        <div class="p-col-12 p-md-12 p-lg-12">
+    <form>
+
+        <div class="p-grid">
+
+          <div class="p-col-12 p-md-12 p-lg-12">
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+         </div>
+
+        <div class="p-col-12 p-md-2 p-lg-2">
+            <label for=""  class="fontLogin">CPF:</label>
+            <p-inputMask mask="999.999.999-99" placeholder="CPF" [style]="{ 'width': '100%'}"  ></p-inputMask>
         </div>
 
-<form #usuarioForm="ngForm" (ngSubmit)="salvar(usuarioForm)">
+        <div class="p-col-12 p-md-6 p-lg-6 ">
+            <label>Nome</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
 
-    <label >Nome</label>
-    <input name="nome" ngModel>
+        <div class="p-col-12 p-md-4 p-lg-4">
+            <label>E-mail</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
 
-    <label>Email</label>
-    <input name="email" ngModel>
+        <div class="p-col-12 p-md-12 p-lg-2">
+            <label>Telefone</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
 
-    <label >Senha</label>
-    <input name="senha" ngModel>
+        <div class="p-col-12 p-md-12 p-lg-2">
+            <label>Doador de Orgão</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
 
-    <button type="submit">SALVAR</button>
+        <div class="p-col-12 p-md-12 p-lg-2 ">
+            <label>Peso</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
+  
+        <div class="p-col-12 p-md-12 p-lg-2">
+            <label>Altura</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
 
-</form>
+        <div class="p-col-12 p-md-12 p-lg-2">
+            <label>Nascimento</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
+
+        <div class="p-col-12 p-md-12 p-lg-2">
+            <label>Sexo</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
+
+        <div class="p-col-12 p-md-12 p-lg-12">
+            <label>Tipo sanguinio</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
+
+        <div class="p-col-12 p-md-12 p-lg-3">
+            <label>Estado de moradia</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
+
+        <div class="p-col-12 p-md-12 p-lg-4">
+            <label>Observação</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
+
+        <div class="p-col-12 p-md-12 p-lg-7">
+            <label>Senha</label>
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">   
+              
+        </div>
+
+        <div class="p-col-12 p-md-12 p-lg-7">
+            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        </div>
+    
+        
+<!--
+
+    <h5>Multiple Addons</h5>
+
+[style]="{ 'width': '100%'}" 
+-->
+            
+
+            <button type="submit">SALVAR</button>
+
+          </div>
+        
+        
+    </form>
+
+
+    
         <div *ngIf="activeIndex == 0" >
             COLUNA 1
         </div>
@@ -35,11 +112,11 @@
 
 
         
-        <button pButton type="button" label="<" class="p-d-flex p-jc-start"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
-        <p-button label=">" class="p-d-flex p-jc-end" (click)="alterar(+1)" *ngIf="activeIndex < 2"></p-button>
+        <button pButton type="button" label="<" class="p-d-flex p-jc-start p-d-inline-flex"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
+        <p-button label=">" class="p-d-flex p-jc-end p-d-inline-flex" (click)="alterar(+1)" *ngIf="activeIndex < 2"></p-button>
 
-        </div>
 </div>
+
 
 <!-- 
 
