@@ -17,20 +17,21 @@
 
               <label for=""  class="fontLogin">Usuário:</label>
           
-                <p-inputMask mask="999.999.999-99" [(ngModel)]="inputTempSenha" placeholder="CPF" [style]="{ 'width': '100%'}"  ></p-inputMask>
+                <p-inputMask [(ngModel)]="creds.cpf" name="cpf" mask="999.999.999-99" placeholder="CPF" [style]="{ 'width': '100%'}"  ></p-inputMask>
           
   
             </div>
             <div class="p-col-12" *ngIf="liberarCamposLogin == true">
               <label for="" class="fontLogin">Senha:</label>
         
-              <input class="p-col-12" type="password" pInputText />
+              <input [(ngModel)]="creds.senha" name="senha" class="p-col-12" type="password" pInputText />
             </div>
             <div class="p-col-12 sizes" style="text-align: center;">
                 <p-button label="ENTRAR"  [style]="{ 'width': '80%', 'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)'}" styleClass="p-button-lg" (click)= "alterarCss()"></p-button>
             </div>
             <div class="p-col-12 sizes"  *ngIf="liberarCamposLogin == true" style="text-align: center;">
               
+              <p-button label="LOGAR ACESSAR"  [style]="{ 'width': '80%', 'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)'}" styleClass="p-button-lg" (click)= "navigateToUsuarioLogado()"></p-button>
           
                 <p-button  [style]="{ 'width': '90%', 'background': '#f5f6fa','color':'#2196f3'}" styleClass="p-button " (click)= "alterarCss()">ESQUECI MINHA SENHA</p-button>
             

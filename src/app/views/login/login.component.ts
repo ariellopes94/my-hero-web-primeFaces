@@ -1,6 +1,9 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
+
+import { CredenciaisDTO } from './../../models/DTO/credenciais.dto';
 
 @Component({
   selector: 'app-login',
@@ -8,15 +11,23 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  creds: CredenciaisDTO = {
+    cpf: '',
+    senha: ''
+  };
+
   //CSS
   alinanharContainer: string;
   liberarCamposLogin = false;
   possitionLogoTransition: string;
 
   //classe
-  inputTempSenha: string;
 
-  constructor(private primengConfig: PrimeNGConfig, private router: Router) {}
+  constructor(
+    private primengConfig: PrimeNGConfig,
+    private router: Router,
+    public auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -60,6 +71,21 @@ export class LoginComponent implements OnInit {
 
   navigateToLeitorQr(): void {
     this.router.navigate(['/leitor-qr-code']);
+  }
+
+  navigateToUsuarioLogado(): void {
+    this.creds.cpf = this.creds.cpf.replace(/\D/gim, '');
+    alert('TEste' + this.creds.cpf);
+
+    this.auth.authenticate(this.creds).subscribe(
+      (response) => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+
+        this.router.navigate(['/leitor-qr-code']);
+      },
+      (error) => {}
+    );
+    console.log(this.creds);
   }
 
   navigateToPacienteCreate(): void {

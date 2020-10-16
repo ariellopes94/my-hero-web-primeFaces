@@ -1,0 +1,162 @@
+{{contatoDeEmergencia | json}}
+
+{{contatoDeEmergencias | json}}
+<h5>Default</h5>
+
+<p-messages [value]="msgs"></p-messages>
+<p-accordion>
+    <p-accordionTab header="Header I" [selected]="true">
+        <div class="p-grid">
+        <!-- 
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+        <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.id"> 
+        <label for="float-input">ID</label>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
+        <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.nome"> 
+        <label for="float-input">Nome</label>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
+        <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.paretesco"> 
+        <label for="float-input">Paretesco</label>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
+        <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.numero"> 
+        <label for="float-input">Numero</label>
+        </div>
+
+        -->
+            <span class="p-buttonset">
+                <button button pButton pRipple label="ADD" icon="pi pi-check" (click)="abrirModalCread()"></button>
+            </span>
+
+
+
+
+        <!--
+        <button (click)="addContato()"></button>
+
+        -->
+
+
+        <!-- TESTTTTT-->
+
+
+
+
+
+        <!---->
+        </div>
+
+        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+
+        <p-dialog header="Compatibilidade" [(visible)]="displayModal" [modal]="true" [style]="{width: '90vw'}" [baseZIndex]="10000"
+        [draggable]="false" [resizable]="false">
+
+
+            <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+                <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.id"> 
+                <label for="float-input">ID</label>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
+                <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.nome"> 
+                <label for="float-input">Nome</label>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
+                <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.paretesco"> 
+                <label for="float-input">Paretesco</label>
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
+                <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.numero"> 
+                <label for="float-input">Numero</label>
+            </div>
+
+
+
+            <ng-template pTemplate="footer">
+                <span class="p-buttonset">
+                    <button pButton pRipple label="Salvar" icon="pi pi-check" (click)="addContato()"></button>
+                </span>
+                <span class="p-buttonset">
+                    <button pButton pRipple label="Alterar" icon="pi pi-check" (click)="salvarAlteracao()"></button>
+                </span>
+                <p-button icon="pi  pi-check" (click)="displayModal=false" label="Ok" [style]="{'background':'#2196f3'}"></p-button>
+            </ng-template>
+        </p-dialog>
+
+
+
+
+
+
+
+
+        <div class="p-grid"  style="margin-top: 10px">
+            <div class="p-col-12 p-md-12 p-lg-12 "> 
+                <p-card  *ngFor="let contato of contatoDeEmergencias; let id = index">
+                    <table [style]="{ 'width': '100%'}">
+                        
+                     <tr>
+                        <td>
+                            <div class="p-grid p-jc-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Contacts_logo.png" alt=""
+                                style="width:60px">
+                            </div>
+                        </td>
+
+
+                        <td  style="padding : 30px 0px 0px 10px">
+                            {{contato.nome}} <br> 
+                        
+                            {{contato.paretesco}}<br>
+                           
+                            {{contato.numero}}<br>
+                            <div class="p-grid p-jc-end">
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 " (click)="editarContatos(id)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletarConfirmar(id)"></button>
+                            </div>
+                        </td>
+                    </tr>
+                 </table>
+                </p-card>
+            </div>
+        </div>
+
+
+
+
+        <!--
+        <div class="p-grid">
+            <div class="p-col-12 p-md-12 p-lg-12 "> 
+                <p-card  *ngFor="let contato of contatoDeEmergencias; let id = index">
+                    <td>
+                        <div class="p-grid p-jc-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Contacts_logo.png" alt=""
+                            style="width:60px">
+                        </div>
+                    </td>
+
+
+                    <td [style]="{ 'width': '100%'}">
+                        {{contato.nome}} <br>
+                        <hr>
+                        {{contato.paretesco}}<br>
+                        <hr>
+                        {{contato.numero}}<br>
+                        <div class="p-grid p-jc-end">
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 " (click)="editarContatos(id)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletarConfirmar(id)"></button>
+                        </div>
+                    </td>
+                </p-card>
+            </div>
+        </div> -->
+    </p-accordionTab>
+</p-accordion>
+
