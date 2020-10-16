@@ -1,0 +1,15 @@
+<h5>Content with Filters</h5>
+<p-dropdown [options]="estadoDeMoradia" [(ngModel)]="selectedEstadoMoradia" optionLabel="name" [filter]="true" [showClear]="true" placeholder="Select a Country">
+    <ng-template pTemplate="selectedItem">
+        <div class="estadoMoradia-item estadoMoradia-item-value"  *ngIf="selectedEstadoMoradia">
+            <img src="assets/estados/estado{{selectedEstadoMoradia.id}}.png" [class]="'flag flag-' + selectedEstadoMoradia.code.toLowerCase()" />
+            <div>{{selectedEstadoMoradia.name}}</div>
+        </div>
+    </ng-template>
+    <ng-template let-estadoMoradia pTemplate="item">
+        <div class="estadoMoradia-item">
+            <img src="assets/estados/estado{{estadoMoradia.value.id}}.png" [class]="'flag flag-' + estadoMoradia.value.code.toLowerCase()" />
+            <div>{{estadoMoradia.value.name}}</div>
+        </div>
+    </ng-template>
+</p-dropdown>

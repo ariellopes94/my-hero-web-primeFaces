@@ -1,0 +1,14 @@
+
+<h5>Content with Filters</h5>
+<p-dropdown  [options]="tipoSaquinioEnum" [style]="{'width':'100%'}" [(ngModel)]="tipoSanquinioSelecionado" optionLabel="name" [filter]="true" [showClear]="true" placeholder="Select a Country">
+    <ng-template pTemplate="selectedItem" >
+        <div class="tipoSaquinio-item tipoSaquinio-item-value"  *ngIf="tipoSanquinioSelecionado">
+            <div>{{tipoSanquinioSelecionado.name}}</div>
+        </div>
+    </ng-template>
+    <ng-template let-tipoSaquinio pTemplate="item">
+        <div class="tipoSaquinio-item">
+            <div>{{tipoSaquinio.value.name}}</div>
+        </div>
+    </ng-template>
+</p-dropdown>
