@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+interface EstadoDeMoradia {
+  name: string;
+  code: string;
+  id: string;
+}
 
 @Component({
   selector: 'app-estado-de-moradia',
@@ -6,8 +12,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./estado-de-moradia.component.css']
 })
 export class EstadoDeMoradiaComponent implements OnInit {
-  selectedEstadoMoradia: any;
-  estadoDeMoradia: any[];
+  @Output() estadoDeMoradiaSelectOutput = new EventEmitter();
+  selectedEstadoMoradia: EstadoDeMoradia;
+  estadoDeMoradia: EstadoDeMoradia[];
 
   ngOnInit(): void {}
 
@@ -43,7 +50,7 @@ export class EstadoDeMoradiaComponent implements OnInit {
     ];
   }
 
-  test() {
-    console.log(this.selectedEstadoMoradia.code);
+  funcaoEstadoDeMoradiaOutput(estadoMoradia: any) {
+    this.estadoDeMoradiaSelectOutput.emit(this.selectedEstadoMoradia);
   }
 }

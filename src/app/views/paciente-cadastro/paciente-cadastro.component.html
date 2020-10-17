@@ -1,77 +1,89 @@
 <div class="container">
     <form>
 
+        PESSSOA {{paciente |json}}
         <div class="p-grid">
 
           <div class="p-col-12 p-md-12 p-lg-12">
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
          </div>
 
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <p-inputMask [(ngModel)]="paciente.cpf" name="cpf" mask="999.999.999-99" [style]="{ 'width': '100%'}"  ></p-inputMask>
+            <label for="float-input">CPF</label>
+        </div>
+
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.nome" name="nome" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Nome</label>
+        </div>
+
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.email" name="email" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">E-mail</label>
+        </div>
+
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.telefone" name="telefone" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Telefone</label>
+        </div>
+
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.doadorDeOrgao" name="doadorDeOrgao" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Doador de Orgão</label>
+        </div>
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.peso" name="peso" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Peso</label>
+        </div>
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.altura" name="altura"  type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Altura</label>
+        </div>
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.nascimento" name="nascimento" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Nascimento</label>
+        </div>
+
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.sexo" name="sexo"  type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Sexo</label>
+        </div>
+
+        <!--
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input"  [(ngModel)]="paciente.tipoSanguinio" name="tipoSanguinio" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Tipo sanguinio</label>
+        </div>
+        -->
+
+         <!-- TIPO SANGUIOO-->
+
         <div class="p-col-12 p-md-2 p-lg-2">
-            <label for=""  class="fontLogin">CPF:</label>
-            <p-inputMask mask="999.999.999-99" placeholder="CPF" [style]="{ 'width': '100%'}"  ></p-inputMask>
+            <app-tipo-saquinio-select (tipoSanquinioSelectOutput)="SelecionadoTipoSanquinio($event)"></app-tipo-saquinio-select>
         </div>
 
-        <div class="p-col-12 p-md-6 p-lg-6 ">
-            <label>Nome</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+         <!--Tipo saguinio-->
+
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+           <!-- <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Estado de moradia</label> -->
+
+            <app-estado-de-moradia (estadoDeMoradiaSelectOutput)="SelecionadoEstadoMoradia($event)"></app-estado-de-moradia>
         </div>
 
-        <div class="p-col-12 p-md-4 p-lg-4">
-            <label>E-mail</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Observação</label>
         </div>
 
-        <div class="p-col-12 p-md-12 p-lg-2">
-            <label>Telefone</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Senha</label>
         </div>
 
-        <div class="p-col-12 p-md-12 p-lg-2">
-            <label>Doador de Orgão</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
-        </div>
 
-        <div class="p-col-12 p-md-12 p-lg-2 ">
-            <label>Peso</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
-        </div>
-  
-        <div class="p-col-12 p-md-12 p-lg-2">
-            <label>Altura</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
-        </div>
 
-        <div class="p-col-12 p-md-12 p-lg-2">
-            <label>Nascimento</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
-        </div>
-
-        <div class="p-col-12 p-md-12 p-lg-2">
-            <label>Sexo</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
-        </div>
-
-        <div class="p-col-12 p-md-12 p-lg-12">
-            <label>Tipo sanguinio</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
-        </div>
-
-        <div class="p-col-12 p-md-12 p-lg-3">
-            <label>Estado de moradia</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
-        </div>
-
-        <div class="p-col-12 p-md-12 p-lg-4">
-            <label>Observação</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
-        </div>
-
-        <div class="p-col-12 p-md-12 p-lg-7">
-            <label>Senha</label>
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">   
-              
-        </div>
 
         <div class="p-col-12 p-md-12 p-lg-7">
             <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
