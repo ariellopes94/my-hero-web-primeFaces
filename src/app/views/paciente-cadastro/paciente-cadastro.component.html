@@ -19,21 +19,34 @@
         </div>
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input" [(ngModel)]="paciente.email" name="email" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <input id="float-input" [(ngModel)]="paciente.email" name="email" type="email" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">E-mail</label>
         </div>
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input" [(ngModel)]="paciente.telefone" name="telefone" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <p-inputMask [(ngModel)]="paciente.telefone" name="telefone" mask="(99)9999-99999" [style]="{ 'width': '100%'}"  ></p-inputMask>
             <label for="float-input">Telefone</label>
         </div>
 
+        <!-- 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.doadorDeOrgao" name="doadorDeOrgao" type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Doador de Orgão</label>
         </div>
+    -->
+        
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input" [(ngModel)]="paciente.peso" name="peso" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            
+            <div class="p-field-checkbox">
+                <p-checkbox [(ngModel)]="paciente.doadorDeOrgao" name="res" binary="true" inputId="binary"></p-checkbox>
+                <label for="binary">Doador de orgao</label>
+            </div>
+
+        </div>
+
+
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.peso" name="peso" type="number" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Peso</label>
         </div>
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
@@ -45,9 +58,16 @@
             <label for="float-input">Nascimento</label>
         </div>
 
+        <!--
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.sexo" name="sexo"  type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Sexo</label>
+        </div>
+        -->
+       
+
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <p-dropdown [options]="sexo" [(ngModel)]="sexoSelecionada" name="tipoSanguinio" placeholder="Select a City" optionLabel="name" [showClear]="true" (ngModelChange)="funcaoSexo($event)"></p-dropdown>
         </div>
 
         <!--
@@ -60,8 +80,8 @@
          <!-- TIPO SANGUIOO-->
 
         <div class="p-col-12 p-md-2 p-lg-2">
-            <app-tipo-saquinio-select (tipoSanquinioSelectOutput)="SelecionadoTipoSanquinio($event)"></app-tipo-saquinio-select>
-        </div>
+            <app-tipo-saquinio-select (tipoSanquinioSelectOutput)="selecionadoTipoSanquinio($event)"></app-tipo-saquinio-select>
+        </div> 
 
          <!--Tipo saguinio-->
 
@@ -69,7 +89,7 @@
            <!-- <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Estado de moradia</label> -->
 
-            <app-estado-de-moradia (estadoDeMoradiaSelectOutput)="SelecionadoEstadoMoradia($event)"></app-estado-de-moradia>
+            <app-estado-de-moradia (estadoDeMoradiaSelectOutput)="selecionadoEstadoMoradia($event)"></app-estado-de-moradia>
         </div>
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
@@ -81,7 +101,8 @@
             <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Senha</label>
         </div>
-
+        <h5>Password</h5>
+        <input pPassword type="password" name="senha" [(ngModel)]="paciente.senha" />
 
 
 
@@ -94,11 +115,8 @@
 
 
 
-
-
-
         <div class="p-col-12 p-md-12 p-lg-7">
-        <app-telefone-de-contatos></app-telefone-de-contatos>
+        <app-telefone-de-contatos  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
         </div>
         
 <!--

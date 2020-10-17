@@ -28,6 +28,8 @@ import { BlockUIModule } from 'primeng/blockui';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
+import { CheckboxModule } from 'primeng/checkbox';
+import { PasswordModule } from 'primeng/password';
 
 //Leitor qr code
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
@@ -80,6 +82,8 @@ import { UsuarioLogadoComponent } from './views/usuario-logado/usuario-logado.co
     ConfirmDialogModule,
     MessagesModule,
     DropdownModule,
+    CheckboxModule,
+    PasswordModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })

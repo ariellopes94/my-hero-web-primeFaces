@@ -1,5 +1,5 @@
 import { ContatoDeEmergencia } from './../../models/contatoDeEmergencia.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { Message } from 'primeng/api';
 
@@ -11,7 +11,11 @@ import { Message } from 'primeng/api';
 })
 export class TelefoneDeContatosComponent implements OnInit {
   displayModal = false;
+
+  @Output() contatosDeEmergenciasOutput  = new EventEmitter<ContatoDeEmergencia[]>();
+  
   contatoDeEmergencia: ContatoDeEmergencia = new ContatoDeEmergencia();
+
   contatoDeEmergencias: ContatoDeEmergencia[] = [];
   idLinhaParaEdita: number;
   msgs: Message[] = [];
@@ -28,6 +32,8 @@ export class TelefoneDeContatosComponent implements OnInit {
     this.contatoDeEmergencias.push(this.contatoDeEmergencia);
     this.contatoDeEmergencia = new ContatoDeEmergencia();
     this.displayModal = false;
+
+    this.contatosDeEmergenciasOutput.emit(this.contatoDeEmergencias);
     //  console.log(this.contatoDeEmergencia);
     //  this.contatosDeEmergencias.push(this.model);
     // this.contatosDeEmergenciasOutput.emit(this.contatosDeEmergencias);

@@ -8,12 +8,22 @@ import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 
+interface Sexo {
+  name: string,
+  code: string
+}
+
+
 @Component({
   selector: 'app-paciente-cadastro',
   templateUrl: './paciente-cadastro.component.html',
   styleUrls: ['./paciente-cadastro.component.css']
 })
 export class PacienteCadastroComponent implements OnInit {
+
+  sexo: Sexo[];
+  sexoSelecionada: Sexo;
+//
   alergiasComponentMultiselect: Alergia[] = [];
   doencasComponentMultiselect: Doenca[] = [];
   medicamentosComponentMultiselect: Medicamento[] = [];
@@ -23,6 +33,7 @@ export class PacienteCadastroComponent implements OnInit {
   paciente: Paciente = new Paciente();
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
+  checked: boolean = false;
   val1: string;
   items: MenuItem[];
   activeIndex = 0;
@@ -56,6 +67,11 @@ export class PacienteCadastroComponent implements OnInit {
         }
       }*/
     ];
+
+    this.sexo = [
+      {name: 'Masculino', code: 'MASCULINO'},
+      {name: 'Feminino', code: 'FEMININO'}
+  ];
   }
 
   alterar(numero: number): void {
@@ -68,7 +84,7 @@ export class PacienteCadastroComponent implements OnInit {
     console.log(form);
   }
 
-  SelecionadoTipoSanquinio(tipoSanquinioSelecionada): void {
+  selecionadoTipoSanquinio(tipoSanquinioSelecionada): void {
     this.paciente.tipoSanguinio = tipoSanquinioSelecionada.value;
     alert('PACIENTE PESSOA' + tipoSanquinioSelecionada.value);
     //this.paciente.alergias = alergiasSelecionadas;
@@ -77,12 +93,21 @@ export class PacienteCadastroComponent implements OnInit {
     //  this.alergiasComponentMultiselect.push(alergiasSelecionadas);
   }
 
-  SelecionadoEstadoMoradia(estadoMoradiaSelecionada): void {
+  selecionadoEstadoMoradia(estadoMoradiaSelecionada): void {
     this.paciente.estadoMoradia = estadoMoradiaSelecionada.code;
     alert('PACIENTE PESSOA' + estadoMoradiaSelecionada.code);
     //this.paciente.alergias = alergiasSelecionadas;
     //   this.paciente.alergias.push(alergiasSelecionadas);
     //this.alergiasComponentMultiselect = [];
     //  this.alergiasComponentMultiselect.push(alergiasSelecionadas);
+  }
+
+  funcaoSexo(sexoSelecionado): void{
+    this.paciente.sexo = sexoSelecionado.code;
+
+  }
+
+  funcaoContatoDeEmergencia(contatosDeEmergencias) : void{
+    this.paciente.contatosDeEmergencias = contatosDeEmergencias;
   }
 }
