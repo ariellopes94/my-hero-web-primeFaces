@@ -1,5 +1,8 @@
 
+<!--{{alergiasSelecionadas}} -->
+<p-multiSelect funcaoEstadoDeMoradiaOutput [options]="alergias" [(ngModel)]="alergiasSelecionadas" 
+defaultLabel="Select a City" optionLabel="nome" (ngModelChange)="funcaoEstadoDeMoradiaOutput($event)"></p-multiSelect>
 
-<p-multiSelect [options]="alergias" [(ngModel)]="alergiasSelecionadas" defaultLabel="Select a City" optionLabel="nome"></p-multiSelect>
 
-{{alergiasSelecionadas | json}}
+
+OIIEEE{{ alergiasInput |json }} OIIEEE

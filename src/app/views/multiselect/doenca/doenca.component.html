@@ -1,5 +1,2 @@
-
-
-<p-multiSelect [options]="doencas" [(ngModel)]="doencasSelecionadas" defaultLabel="Select a City" optionLabel="nome"></p-multiSelect>
-
-{{doencasSelecionadas | json}}
+<p-multiSelect [options]="doencas" [(ngModel)]="doencasSelecionadas" defaultLabel="Select a City" 
+optionLabel="nome" (ngModelChange)="funcaoDoencas($event)"></p-multiSelect>

@@ -1,17 +1,19 @@
 <div class="container">
+    PESSSOA {{paciente |json}}
     <form>
 
-        PESSSOA {{paciente |json}}
-        <div class="p-grid">
 
-          <div class="p-col-12 p-md-12 p-lg-12">
+    <div class="p-grid"  *ngIf="activeIndex == 0">
+
+        <div class="p-col-12 p-md-12 p-lg-12">
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
-         </div>
+        </div>
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <p-inputMask [(ngModel)]="paciente.cpf" name="cpf" mask="999.999.999-99" [style]="{ 'width': '100%'}"  ></p-inputMask>
             <label for="float-input">CPF</label>
         </div>
+
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.nome" name="nome" type="text" pInputText  [style]="{ 'width': '100%'}" > 
@@ -30,18 +32,16 @@
 
         <!-- 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input" [(ngModel)]="paciente.doadorDeOrgao" name="doadorDeOrgao" type="text" pInputText  [style]="{ 'width': '100%'}" > 
-            <label for="float-input">Doador de Orgão</label>
+        <input id="float-input" [(ngModel)]="paciente.doadorDeOrgao" name="doadorDeOrgao" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+        <label for="float-input">Doador de Orgão</label>
         </div>
-    -->
-        
+        -->
+
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            
             <div class="p-field-checkbox">
                 <p-checkbox [(ngModel)]="paciente.doadorDeOrgao" name="res" binary="true" inputId="binary"></p-checkbox>
                 <label for="binary">Doador de orgao</label>
             </div>
-
         </div>
 
 
@@ -49,10 +49,12 @@
             <input id="float-input" [(ngModel)]="paciente.peso" name="peso" type="number" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Peso</label>
         </div>
+
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.altura" name="altura"  type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Altura</label>
         </div>
+
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.nascimento" name="nascimento" type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Nascimento</label>
@@ -60,11 +62,11 @@
 
         <!--
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input" [(ngModel)]="paciente.sexo" name="sexo"  type="text" pInputText  [style]="{ 'width': '100%'}" > 
-            <label for="float-input">Sexo</label>
+        <input id="float-input" [(ngModel)]="paciente.sexo" name="sexo"  type="text" pInputText  [style]="{ 'width': '100%'}" > 
+        <label for="float-input">Sexo</label>
         </div>
         -->
-       
+
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <p-dropdown [options]="sexo" [(ngModel)]="sexoSelecionada" name="tipoSanguinio" placeholder="Select a City" optionLabel="name" [showClear]="true" (ngModelChange)="funcaoSexo($event)"></p-dropdown>
@@ -72,23 +74,22 @@
 
         <!--
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input"  [(ngModel)]="paciente.tipoSanguinio" name="tipoSanguinio" type="text" pInputText  [style]="{ 'width': '100%'}" > 
-            <label for="float-input">Tipo sanguinio</label>
+        <input id="float-input"  [(ngModel)]="paciente.tipoSanguinio" name="tipoSanguinio" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+        <label for="float-input">Tipo sanguinio</label>
         </div>
         -->
 
-         <!-- TIPO SANGUIOO-->
+        <!-- TIPO SANGUIOO-->
 
         <div class="p-col-12 p-md-2 p-lg-2">
             <app-tipo-saquinio-select (tipoSanquinioSelectOutput)="selecionadoTipoSanquinio($event)"></app-tipo-saquinio-select>
         </div> 
 
-         <!--Tipo saguinio-->
+        <!--Tipo saguinio-->
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-           <!-- <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
-            <label for="float-input">Estado de moradia</label> -->
-
+        <!-- <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+        <label for="float-input">Estado de moradia</label> -->
             <app-estado-de-moradia (estadoDeMoradiaSelectOutput)="selecionadoEstadoMoradia($event)"></app-estado-de-moradia>
         </div>
 
@@ -101,6 +102,7 @@
             <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Senha</label>
         </div>
+
         <h5>Password</h5>
         <input pPassword type="password" name="senha" [(ngModel)]="paciente.senha" />
 
@@ -109,52 +111,77 @@
         <div class="p-col-12 p-md-12 p-lg-7">
             <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
         </div>
-    
+
 
 
 
 
 
         <div class="p-col-12 p-md-12 p-lg-7">
-        <app-telefone-de-contatos  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
+            <app-telefone-de-contatos  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
         </div>
-        
-<!--
 
-    <h5>Multiple Addons</h5>
+        <!--
 
-[style]="{ 'width': '100%'}" 
--->
+        <h5>Multiple Addons</h5>
+
+        [style]="{ 'width': '100%'}" 
+        -->
+
+
+        <button type="submit">SALVAR</button>
+
+
+    </div>
+
+    <!-- COLUNA 2-->
+    <div class="p-grid" *ngIf="activeIndex == 1" >
+
+        <div class="p-col-12 p-md-10 p-lg-10 p-float-label">
             
+            <app-alergia [alergiasInput]="alergiasSelecionadasInput" (alergiaSelectOutput)="funcaoAlergia($event)"></app-alergia>
 
-            <button type="submit">SALVAR</button>
-
-          </div>
-        
-        
-    </form>
-
-
-    
-        <div *ngIf="activeIndex == 0" >
-            COLUNA 1
         </div>
 
+        <div class="p-col-12 p-md-10 p-lg-10 p-float-label">
+            <app-doenca (doencaSelectOutput)="funcaoDoenca($event)"></app-doenca>
+        </div>  
 
-        <div *ngIf="activeIndex == 1" >
-            COLUNA 2
+        <div class="p-col-12 p-md-10 p-lg-10 p-float-label">
+            <app-medicamento (medicamentoSelectOutput)="funcaoMedicamento($event)"></app-medicamento>
         </div>
 
+         
 
-        <div *ngIf="activeIndex == 2" >
-            COLUNA 3
-        </div>
-
+    </div>
 
 
-        
-        <button pButton type="button" label="<" class="p-d-flex p-jc-start p-d-inline-flex"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
-        <p-button label=">" class="p-d-flex p-jc-end p-d-inline-flex" (click)="alterar(+1)" *ngIf="activeIndex < 2"></p-button>
+    <!-- COLUNA 3-->
+    <div class="p-grid" *ngIf="activeIndex == 2"  >
+
+
+    </div>
+</form>
+
+
+
+
+<!-- 
+
+<div *ngIf="activeIndex == 1" >
+COLUNA 2
+</div>
+
+
+<div *ngIf="activeIndex == 2" ></div>
+COLUNA 3
+</div>
+-->
+
+
+
+<button pButton type="button" label="<" class="p-d-flex p-jc-start p-d-inline-flex"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
+<p-button label=">" class="p-d-flex p-jc-end p-d-inline-flex" (click)="alterar(+1)" *ngIf="activeIndex < 2"></p-button>
 
 </div>
 
@@ -162,64 +189,64 @@
 <!-- 
 
 
-        
-        <router-outlet></router-outlet>
 
-        <h3 class="first">Basic</h3>
-        <p-steps [model]="items"></p-steps>
+<router-outlet></router-outlet>
 
-        <h3>Clickable</h3>
-        <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+<h3 class="first">Basic</h3>
+<p-steps [model]="items"></p-steps>
 
-       
-        <h3 class="first">Basic</h3>
-        <p-steps [model]="items"></p-steps>
-        -->
+<h3>Clickable</h3>
+<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+
+
+<h3 class="first">Basic</h3>
+<p-steps [model]="items"></p-steps>
+-->
 
 
 <!--
-            
-        <div class="p-grid ">
-            <div class="p-col-8 p-md-8 p-lg-8"> 
 
-                <p-card class="p-justify-center">
-                    <p-steps [model]="items" [readonly]="true"></p-steps>
-                </p-card>
-            </div>
-            <div class="p-col-12 p-md-6 p-lg-3">B</div>
-            <div class="p-col-12 p-md-6 p-lg-3">C</div>
-            <div class="p-col-12 p-md-6 p-lg-3">D</div>
-        </div>
+<div class="p-grid ">
+<div class="p-col-8 p-md-8 p-lg-8"> 
 
-
-        <router-outlet></router-outlet>
-
-        <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
-
-        <div>
-        <button pButton type="button" label="<" class="p-d-flex p-jc-start"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
-
-        <p-button label=">" class="p-d-flex p-jc-end" (click)="alterar(+1)" *ngIf="activeIndex < 3"></p-button>
-
-        </div>
+<p-card class="p-justify-center">
+<p-steps [model]="items" [readonly]="true"></p-steps>
+</p-card>
+</div>
+<div class="p-col-12 p-md-6 p-lg-3">B</div>
+<div class="p-col-12 p-md-6 p-lg-3">C</div>
+<div class="p-col-12 p-md-6 p-lg-3">D</div>
+</div>
 
 
-        <div *ngIf="activeIndex == 0" >
-            COLUNA 1
-        </div>
+<router-outlet></router-outlet>
+
+<p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+
+<div>
+<button pButton type="button" label="<" class="p-d-flex p-jc-start"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
+
+<p-button label=">" class="p-d-flex p-jc-end" (click)="alterar(+1)" *ngIf="activeIndex < 3"></p-button>
+
+</div>
 
 
-        <div *ngIf="activeIndex == 1" >
-            COLUNA 2
-        </div>
+<div *ngIf="activeIndex == 0" >
+COLUNA 1
+</div>
 
 
-        <div *ngIf="activeIndex == 2" >
-            COLUNA 3
-        </div>
+<div *ngIf="activeIndex == 1" >
+COLUNA 2
+</div>
 
-        <div *ngIf="activeIndex == 3" >
-            COLUNA 4
-        </div>
 
-        -->
+<div *ngIf="activeIndex == 2" >
+COLUNA 3
+</div>
+
+<div *ngIf="activeIndex == 3" >
+COLUNA 4
+</div>
+
+-->

@@ -22,6 +22,6 @@ export class Paciente {
 
   medicamentos: Medicamento[] = [];
   doencas: Doenca[] = [];
-  alergias: Alergia[];
+  alergias: Alergia[] = [];
   contatosDeEmergencias: ContatoDeEmergencia[] = [];
 }

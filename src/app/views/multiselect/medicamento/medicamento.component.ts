@@ -1,6 +1,7 @@
 import { Medicamento } from './../../../models/medicamento.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MedicamentosService } from './../../../services/medicamentos.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-medicamento',
@@ -8,6 +9,7 @@ import { MedicamentosService } from './../../../services/medicamentos.service';
   styleUrls: ['./medicamento.component.css']
 })
 export class MedicamentoComponent implements OnInit {
+  @Output() medicamentoSelectOutput = new EventEmitter();
   medicamentos: Medicamento[];
   medicamentosSelecionados: Medicamento[];
 
@@ -22,5 +24,9 @@ export class MedicamentoComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  funcaoMedicamentoOutput(medicamentos: any):void {
+    this.medicamentoSelectOutput.emit(this.medicamentosSelecionados)
   }
 }

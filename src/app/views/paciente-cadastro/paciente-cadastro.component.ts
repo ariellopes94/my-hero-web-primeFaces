@@ -1,9 +1,10 @@
+import { AlergiasService } from './../../services/alergias.service';
 import { Paciente } from './../../models/paciente';
 import { ContatoDeEmergencia } from './../../models/contatoDeEmergencia.model';
 import { Medicamento } from './../../models/medicamento.model';
 import { Doenca } from './../../models/doenca.model';
 import { Alergia } from './../../models/alergia.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
@@ -20,6 +21,9 @@ interface Sexo {
   styleUrls: ['./paciente-cadastro.component.css']
 })
 export class PacienteCadastroComponent implements OnInit {
+
+  alergiasSelecionadasInput : Alergia[] ;
+
 
   sexo: Sexo[];
   sexoSelecionada: Sexo;
@@ -110,4 +114,20 @@ export class PacienteCadastroComponent implements OnInit {
   funcaoContatoDeEmergencia(contatosDeEmergencias) : void{
     this.paciente.contatosDeEmergencias = contatosDeEmergencias;
   }
+
+  funcaoAlergia(alergiaSelecionada) : void {
+    this.paciente.alergias = alergiaSelecionada;
+
+    //Mandar de volta para o imput;
+    this.alergiasSelecionadasInput = alergiaSelecionada
+  }
+
+  funcaoDoenca(doencaSelecionada) : void {
+    this.paciente.doencas = doencaSelecionada;
+  }
+
+  funcaoMedicamento(medicamentoSelecionada) : void {
+    this.paciente.medicamentos = medicamentoSelecionada;
+  }
+
 }

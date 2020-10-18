@@ -1,6 +1,6 @@
 import { AlergiasService } from './../../../services/alergias.service';
 import { Alergia } from './../../../models/alergia.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { PrimeNGConfig, SelectItem, SelectItemGroup } from 'primeng/api';
 
@@ -10,8 +10,15 @@ import { PrimeNGConfig, SelectItem, SelectItemGroup } from 'primeng/api';
   styleUrls: ['./alergia.component.css']
 })
 export class AlergiaComponent implements OnInit {
+
+  @Output() alergiaSelectOutput = new EventEmitter();
+
+  @Input() alergiasInput: Array<any>;
+
   alergias: Alergia[];
   alergiasSelecionadas: Alergia[];
+
+  
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -21,6 +28,9 @@ export class AlergiaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("veio aqui")
+    this.alergiasSelecionadas = this.alergiasInput;
+    
     this.alergiasService.alergiasBuscarTodos().subscribe(
       (reponse) => {
         this.alergias = reponse;
@@ -30,5 +40,9 @@ export class AlergiaComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  funcaoEstadoDeMoradiaOutput(alergia: any):void {
+    this.alergiaSelectOutput.emit(this.alergiasSelecionadas)
   }
 }
