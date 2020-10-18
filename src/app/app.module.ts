@@ -1,3 +1,4 @@
+import { StorageService } from './services/storage.service';
 import { ErrorInterceptor } from './../interceotirs/error-interceptor';
 import { TipoSaquinioSelectComponent } from './views/selects/tipo-saquinio-select/tipo-saquinio-select.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -90,7 +91,8 @@ import { UsuarioLogadoComponent } from './views/usuario-logado/usuario-logado.co
     })
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    StorageService
   ],
   bootstrap: [AppComponent]
 })

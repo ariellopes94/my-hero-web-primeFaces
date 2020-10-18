@@ -4,7 +4,7 @@ import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from '../config/api.config';
 import { CredenciaisDTO } from '../models/DTO/credenciais.dto';
-import { LocalUser } from '../models/local_user';
+import { LocalUser } from '../models/DTO/local_user';
 
 @Injectable({
   providedIn: 'root'
