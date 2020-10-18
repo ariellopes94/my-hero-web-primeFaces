@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
       (response) => {
         this.auth.successfulLogin(response.headers.get('Authorization'));
 
-        this.router.navigate(['/leitor-qr-code']);
+        this.router.navigate(['/paciente-logado']);
       },
       (error) => {}
     );

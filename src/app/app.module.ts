@@ -1,8 +1,10 @@
+import { ErrorInterceptor } from './../interceotirs/error-interceptor';
 import { TipoSaquinioSelectComponent } from './views/selects/tipo-saquinio-select/tipo-saquinio-select.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -33,8 +35,7 @@ import { PasswordModule } from 'primeng/password';
 
 //Leitor qr code
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
-
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AlergiaComponent } from './views/multiselect/alergia/alergia.component';
@@ -57,7 +58,7 @@ import { UsuarioLogadoComponent } from './views/usuario-logado/usuario-logado.co
     TelefoneDeContatosComponent,
     TipoSaquinioSelectComponent,
     EstadoDeMoradiaComponent,
-    UsuarioLogadoComponent
+    UsuarioLogadoComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +89,9 @@ import { UsuarioLogadoComponent } from './views/usuario-logado/usuario-logado.co
       enabled: environment.production
     })
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
