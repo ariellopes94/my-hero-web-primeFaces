@@ -1,5 +1,7 @@
+import { PacienteService } from './../../services/paciente.service';
 import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
+import { PacienteProfileDTO } from 'src/app/models/DTO/paciente_profile.dto';
 
 @Component({
   selector: 'app-profile',
@@ -8,17 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  cpf: string;
+  paciente : PacienteProfileDTO;
 
-  constructor( public storage: StorageService) { }
+
+  constructor( public storage: StorageService,
+               public pacienteService: PacienteService) { }
 
   ngOnInit(): void {
 
     let localUser =  this.storage.getLocalUser();
 
-    if(localUser && localUser.cpf){
-      this.cpf = localUser.cpf;
-    }
-  }
 
+    if(localUser && localUser.cpf){
+      this.pacienteService.findByCpf(localUser.cpf)
+          .subscribe(response => {
+            this.paciente = response;
+            //BuscarImage
+          },
+          error => {});
+   }
+    }
+  
 }
