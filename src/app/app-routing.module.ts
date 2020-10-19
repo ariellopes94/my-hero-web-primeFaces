@@ -1,4 +1,4 @@
-import { UsuarioLogadoComponent } from './views/usuario-logado/usuario-logado.component';
+import { ProfileComponent } from './views/profile/profile.component';
 import { PacienteCadastroComponent } from './views/paciente-cadastro/paciente-cadastro.component';
 import { LeitorQrCodeComponent } from './views/leitor-qr-code/leitor-qr-code.component';
 import { LoginComponent } from './views/login/login.component';
@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'paciente-logado',
-    component: UsuarioLogadoComponent
+    component: ProfileComponent
   }
 ];
 

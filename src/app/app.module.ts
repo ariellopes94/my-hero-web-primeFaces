@@ -45,7 +45,7 @@ import { DoencaComponent } from './views/multiselect/doenca/doenca.component';
 import { MedicamentoComponent } from './views/multiselect/medicamento/medicamento.component';
 import { TelefoneDeContatosComponent } from './views/telefone-de-contatos/telefone-de-contatos.component';
 import { EstadoDeMoradiaComponent } from './views/selects/estado-de-moradia/estado-de-moradia.component';
-import { UsuarioLogadoComponent } from './views/usuario-logado/usuario-logado.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,7 @@ import { UsuarioLogadoComponent } from './views/usuario-logado/usuario-logado.co
     TelefoneDeContatosComponent,
     TipoSaquinioSelectComponent,
     EstadoDeMoradiaComponent,
-    UsuarioLogadoComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
