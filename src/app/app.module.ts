@@ -34,6 +34,7 @@ import { MessagesModule } from 'primeng/messages';
 import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
 import { PasswordModule } from 'primeng/password';
+import { MenubarModule } from 'primeng/menubar';
 
 //Leitor qr code
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
@@ -87,6 +88,7 @@ import { ProfileComponent } from './views/profile/profile.component';
     DropdownModule,
     CheckboxModule,
     PasswordModule,
+    MenubarModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })

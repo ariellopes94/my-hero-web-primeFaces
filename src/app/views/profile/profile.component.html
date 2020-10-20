@@ -1,3 +1,35 @@
+<p-menubar [model]="items" [style]="{ 'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)'}">
+    <ng-template pTemplate="start">
+        <img  src="assets/logo-primengtest.png" height="40" class="p-mr-2">
+    </ng-template>
+</p-menubar>
+
+
+<!-- CARD-->
+
+<!--<div class="p-text-center">  -->
+<div class="p-grid p-text-center p-justify-center containnerLogin">
+
+    <div class="p-col-11 p-sm-10 p-md-10"> 
+        <p-card [header]="paciente?.nome" [subheader]="paciente?.email" [style]="{width: '100%','margin-top' :'20px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img  alt="Card" src="https://image.flaticon.com/icons/svg/3011/3011270.svg"  class="avatar" >
+            </ng-template>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+            <ng-template pTemplate="footer">
+                <p-button label="Save" icon="pi pi-check"></p-button>
+                <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+</div>
+
+
+<!-- CARD-->
+
+
+
 <p>profile works!</p>
 
 
