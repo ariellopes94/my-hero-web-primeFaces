@@ -5,15 +5,18 @@ import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from '../config/api.config';
 import { CredenciaisDTO } from '../models/DTO/credenciais.dto';
 import { LocalUser } from '../models/DTO/local_user';
-import { JwtHelper } from 'angular2-jwt';
-
+//import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  jwtHelper: JwtHelper = new JwtHelper();
+  
+ 
+  jwtHelper = new JwtHelperService();
 
+  
   constructor(public http: HttpClient, public storage: StorageService) {}
 
   authenticate(creds: CredenciaisDTO) {
