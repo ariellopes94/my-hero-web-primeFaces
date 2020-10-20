@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './../interceotirs/auth-interceptor';
 import { AuthService } from './services/auth.service';
 import { StorageService } from './services/storage.service';
 import { ErrorInterceptor } from './../interceotirs/error-interceptor';
@@ -94,7 +95,10 @@ import { ProfileComponent } from './views/profile/profile.component';
     })
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    AuthInterceptor, //DELETAR
+    ErrorInterceptor, //DELETAR
     StorageService,
     AuthService
   ],
