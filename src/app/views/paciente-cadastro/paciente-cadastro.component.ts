@@ -1,3 +1,5 @@
+import { EstadoDeMoradia } from './../../models/Enum/estaoDeMoradiaEnum';
+import { TipoSaquinio } from './../../models/Enum/tipoSanquinioEnum';
 import { AlergiasService } from './../../services/alergias.service';
 import { Paciente } from './../../models/paciente';
 import { ContatoDeEmergencia } from './../../models/contatoDeEmergencia.model';
@@ -23,8 +25,15 @@ interface Sexo {
 export class PacienteCadastroComponent implements OnInit {
 
   alergiasSelecionadasInput : Alergia[] ;
+  doencasSelecionadasInput : Doenca[];
+  medicamentosSelecionadasInput : Medicamento[];
+  contatosEmergenciaModalInput: ContatoDeEmergencia[]=[];
 
-
+  tipoSanquinioSelectInput: TipoSaquinio;
+  
+  estadoMoradiaSelectInput: EstadoDeMoradia;
+  
+  
   sexo: Sexo[];
   sexoSelecionada: Sexo;
 //
@@ -45,6 +54,8 @@ export class PacienteCadastroComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+
+
     this.items = [
       {
         label: 'Pessoa',
@@ -91,6 +102,11 @@ export class PacienteCadastroComponent implements OnInit {
   selecionadoTipoSanquinio(tipoSanquinioSelecionada): void {
     this.paciente.tipoSanguinio = tipoSanquinioSelecionada.value;
     alert('PACIENTE PESSOA' + tipoSanquinioSelecionada.value);
+    
+
+    //Input
+    this.tipoSanquinioSelectInput = tipoSanquinioSelecionada;
+
     //this.paciente.alergias = alergiasSelecionadas;
     //   this.paciente.alergias.push(alergiasSelecionadas);
     //this.alergiasComponentMultiselect = [];
@@ -100,6 +116,12 @@ export class PacienteCadastroComponent implements OnInit {
   selecionadoEstadoMoradia(estadoMoradiaSelecionada): void {
     this.paciente.estadoMoradia = estadoMoradiaSelecionada.code;
     alert('PACIENTE PESSOA' + estadoMoradiaSelecionada.code);
+
+
+    // Mandar de volta Input
+    this.estadoMoradiaSelectInput = estadoMoradiaSelecionada;
+
+
     //this.paciente.alergias = alergiasSelecionadas;
     //   this.paciente.alergias.push(alergiasSelecionadas);
     //this.alergiasComponentMultiselect = [];
@@ -113,21 +135,30 @@ export class PacienteCadastroComponent implements OnInit {
 
   funcaoContatoDeEmergencia(contatosDeEmergencias) : void{
     this.paciente.contatosDeEmergencias = contatosDeEmergencias;
+
+    // Mandar de volta para o imput;
+    this.contatosEmergenciaModalInput = contatosDeEmergencias;
   }
 
   funcaoAlergia(alergiaSelecionada) : void {
     this.paciente.alergias = alergiaSelecionada;
 
-    //Mandar de volta para o imput;
-    this.alergiasSelecionadasInput = alergiaSelecionada
+    // Mandar de volta para o imput;
+    this.alergiasSelecionadasInput = alergiaSelecionada;
   }
 
   funcaoDoenca(doencaSelecionada) : void {
     this.paciente.doencas = doencaSelecionada;
+
+    // Mandar de volta para o imput;
+    this.doencasSelecionadasInput = doencaSelecionada;
   }
 
   funcaoMedicamento(medicamentoSelecionada) : void {
     this.paciente.medicamentos = medicamentoSelecionada;
+
+    // Mandar de volta para o imput;
+    this.medicamentosSelecionadasInput = medicamentoSelecionada;
   }
 
 }

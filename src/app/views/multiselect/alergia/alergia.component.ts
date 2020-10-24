@@ -42,7 +42,7 @@ export class AlergiaComponent implements OnInit {
     );
   }
 
-  funcaoEstadoDeMoradiaOutput(alergia: any):void {
+  funcaoAlergias(alergia: any):void {
     this.alergiaSelectOutput.emit(this.alergiasSelecionadas)
   }
 }

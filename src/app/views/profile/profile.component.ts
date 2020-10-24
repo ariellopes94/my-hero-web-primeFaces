@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
     let localUser =  this.storage.getLocalUser();
 
 
-    if(localUser && localUser.cpf){
+   // if(localUser && localUser.cpf){ pARA ELE BUSCAR O CPF
       this.pacienteService.findByCpf(localUser.cpf)
           .subscribe(response => {
             this.paciente = response;
@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
             //BuscarImage
           },
           error => {});
-   }
+ //  }
 
     this.items = [
       {

@@ -82,19 +82,19 @@
         <!-- TIPO SANGUIOO-->
 
         <div class="p-col-12 p-md-2 p-lg-2">
-            <app-tipo-saquinio-select (tipoSanquinioSelectOutput)="selecionadoTipoSanquinio($event)"></app-tipo-saquinio-select>
+            <app-tipo-saquinio-select [tipoSanquinioInput] = "tipoSanquinioSelectInput" (tipoSanquinioSelectOutput)="selecionadoTipoSanquinio($event)"></app-tipo-saquinio-select>
         </div> 
 
         <!--Tipo saguinio-->
 
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">ddddddd
         <!-- <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
         <label for="float-input">Estado de moradia</label> -->
-            <app-estado-de-moradia (estadoDeMoradiaSelectOutput)="selecionadoEstadoMoradia($event)"></app-estado-de-moradia>
+            <app-estado-de-moradia [estadoDeMoradiaInput]="estadoMoradiaSelectInput" (estadoDeMoradiaSelectOutput)="selecionadoEstadoMoradia($event)"></app-estado-de-moradia>
         </div>
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <input id="float-input" type="text" name="observacao" [(ngModel)]="paciente.observacao" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Observação</label>
         </div>
 
@@ -118,7 +118,7 @@
 
 
         <div class="p-col-12 p-md-12 p-lg-7">
-            <app-telefone-de-contatos  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
+            <app-telefone-de-contatos  [contatosDeEmergenciasInput]="contatosEmergenciaModalInput"  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
         </div>
 
         <!--
@@ -144,11 +144,11 @@
         </div>
 
         <div class="p-col-12 p-md-10 p-lg-10 p-float-label">
-            <app-doenca (doencaSelectOutput)="funcaoDoenca($event)"></app-doenca>
+            <app-doenca [doencasInput]="doencasSelecionadasInput" (doencaSelectOutput)="funcaoDoenca($event)"></app-doenca>
         </div>  
 
         <div class="p-col-12 p-md-10 p-lg-10 p-float-label">
-            <app-medicamento (medicamentoSelectOutput)="funcaoMedicamento($event)"></app-medicamento>
+            <app-medicamento [medicamentosInput]="medicamentosSelecionadasInput" (medicamentoSelectOutput)="funcaoMedicamento($event)"></app-medicamento>
         </div>
 
          

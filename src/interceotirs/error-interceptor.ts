@@ -22,6 +22,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                
             }
 
+            if (err.status === 403) {
+                alert("ERROR 403")
+            }
             console.log("ERROR" + err.error);
             console.log("erar para aparecer mensagem" + err.error.message);
 

@@ -1,5 +1,5 @@
 import { ContatoDeEmergencia } from './../../models/contatoDeEmergencia.model';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { Message } from 'primeng/api';
 
@@ -14,15 +14,20 @@ export class TelefoneDeContatosComponent implements OnInit {
 
   @Output() contatosDeEmergenciasOutput  = new EventEmitter<ContatoDeEmergencia[]>();
   
+  @Input() contatosDeEmergenciasInput: Array<ContatoDeEmergencia>;
+
   contatoDeEmergencia: ContatoDeEmergencia = new ContatoDeEmergencia();
 
   contatoDeEmergencias: ContatoDeEmergencia[] = [];
   idLinhaParaEdita: number;
   msgs: Message[] = [];
 
-  constructor(private confirmationService: ConfirmationService) {}
+  constructor(private confirmationService: ConfirmationService) { console.log("ARIEL LOPES VEIOOOO AQUIIIII")}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("ARIEL LOPES VEIOOOO AQUIIIII")
+    this.contatoDeEmergencias = this.contatosDeEmergenciasInput;
+  }
 
   abrirModalCread() {
     this.displayModal = true;
