@@ -75,8 +75,6 @@ export class LoginComponent implements OnInit {
 
   navigateToUsuarioLogado(): void {
     this.creds.cpf = this.creds.cpf.replace(/\D/gim, '');
-    alert('TEste' + this.creds.cpf);
-
     this.auth.authenticate(this.creds).subscribe(
       (response) => {
         this.auth.successfulLogin(response.headers.get('Authorization'));

@@ -30,9 +30,7 @@ export class LeitorQrCodeComponent implements OnInit {
 
   onCodeResult(resultString: string) {
     this.qrResultString = resultString.trim();
-
     this.displayModalQrcode = true;
-
     this.subtraindoString = this.qrResultString.substring(0, 4);
 
     if (!(this.subtraindoString == 'http' || this.subtraindoString == 'www.')) {

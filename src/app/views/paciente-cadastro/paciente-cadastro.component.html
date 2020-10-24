@@ -1,10 +1,7 @@
 <div class="container">
     PESSSOA {{paciente |json}}
     <form>
-
-
     <div class="p-grid"  *ngIf="activeIndex == 0">
-
         <div class="p-col-12 p-md-12 p-lg-12">
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
         </div>
@@ -13,7 +10,6 @@
             <p-inputMask [(ngModel)]="paciente.cpf" name="cpf" mask="999.999.999-99" [style]="{ 'width': '100%'}"  ></p-inputMask>
             <label for="float-input">CPF</label>
         </div>
-
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.nome" name="nome" type="text" pInputText  [style]="{ 'width': '100%'}" > 
@@ -30,20 +26,12 @@
             <label for="float-input">Telefone</label>
         </div>
 
-        <!-- 
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-        <input id="float-input" [(ngModel)]="paciente.doadorDeOrgao" name="doadorDeOrgao" type="text" pInputText  [style]="{ 'width': '100%'}" > 
-        <label for="float-input">Doador de Orgão</label>
-        </div>
-        -->
-
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <div class="p-field-checkbox">
                 <p-checkbox [(ngModel)]="paciente.doadorDeOrgao" name="res" binary="true" inputId="binary"></p-checkbox>
                 <label for="binary">Doador de orgao</label>
             </div>
         </div>
-
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.peso" name="peso" type="number" pInputText  [style]="{ 'width': '100%'}" > 
@@ -60,36 +48,15 @@
             <label for="float-input">Nascimento</label>
         </div>
 
-        <!--
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-        <input id="float-input" [(ngModel)]="paciente.sexo" name="sexo"  type="text" pInputText  [style]="{ 'width': '100%'}" > 
-        <label for="float-input">Sexo</label>
-        </div>
-        -->
-
-
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <p-dropdown [options]="sexo" [(ngModel)]="sexoSelecionada" name="tipoSanguinio" placeholder="Select a City" optionLabel="name" [showClear]="true" (ngModelChange)="funcaoSexo($event)"></p-dropdown>
         </div>
-
-        <!--
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-        <input id="float-input"  [(ngModel)]="paciente.tipoSanguinio" name="tipoSanguinio" type="text" pInputText  [style]="{ 'width': '100%'}" > 
-        <label for="float-input">Tipo sanguinio</label>
-        </div>
-        -->
-
-        <!-- TIPO SANGUIOO-->
 
         <div class="p-col-12 p-md-2 p-lg-2">
             <app-tipo-saquinio-select [tipoSanquinioInput] = "tipoSanquinioSelectInput" (tipoSanquinioSelectOutput)="selecionadoTipoSanquinio($event)"></app-tipo-saquinio-select>
         </div> 
 
-        <!--Tipo saguinio-->
-
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">ddddddd
-        <!-- <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
-        <label for="float-input">Estado de moradia</label> -->
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <app-estado-de-moradia [estadoDeMoradiaInput]="estadoMoradiaSelectInput" (estadoDeMoradiaSelectOutput)="selecionadoEstadoMoradia($event)"></app-estado-de-moradia>
         </div>
 
@@ -106,28 +73,13 @@
         <h5>Password</h5>
         <input pPassword type="password" name="senha" [(ngModel)]="paciente.senha" />
 
-
-
         <div class="p-col-12 p-md-12 p-lg-7">
             <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
         </div>
 
-
-
-
-
-
         <div class="p-col-12 p-md-12 p-lg-7">
             <app-telefone-de-contatos  [contatosDeEmergenciasInput]="contatosEmergenciaModalInput"  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
         </div>
-
-        <!--
-
-        <h5>Multiple Addons</h5>
-
-        [style]="{ 'width': '100%'}" 
-        -->
-
 
         <button type="submit">SALVAR</button>
 

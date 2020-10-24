@@ -22,7 +22,6 @@ export class EstadoDeMoradiaComponent implements OnInit {
   estadoDeMoradia: EstadoDeMoradia[];
 
   ngOnInit(): void {
-    alert("ARRRWW" + this.estadoDeMoradiaInput)
     this.selectedEstadoMoradia = this.estadoDeMoradiaInput;
   }
 

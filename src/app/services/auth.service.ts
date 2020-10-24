@@ -11,11 +11,8 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthService {
-
-  
  
   jwtHelper = new JwtHelperService();
-
   
   constructor(public http: HttpClient, public storage: StorageService) {}
 

@@ -45,7 +45,6 @@ export class PacienteCadastroComponent implements OnInit {
 
   paciente: Paciente = new Paciente();
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////
   checked: boolean = false;
   val1: string;
   items: MenuItem[];
@@ -101,31 +100,16 @@ export class PacienteCadastroComponent implements OnInit {
 
   selecionadoTipoSanquinio(tipoSanquinioSelecionada): void {
     this.paciente.tipoSanguinio = tipoSanquinioSelecionada.value;
-    alert('PACIENTE PESSOA' + tipoSanquinioSelecionada.value);
-    
-
+  
     //Input
     this.tipoSanquinioSelectInput = tipoSanquinioSelecionada;
-
-    //this.paciente.alergias = alergiasSelecionadas;
-    //   this.paciente.alergias.push(alergiasSelecionadas);
-    //this.alergiasComponentMultiselect = [];
-    //  this.alergiasComponentMultiselect.push(alergiasSelecionadas);
   }
 
   selecionadoEstadoMoradia(estadoMoradiaSelecionada): void {
     this.paciente.estadoMoradia = estadoMoradiaSelecionada.code;
-    alert('PACIENTE PESSOA' + estadoMoradiaSelecionada.code);
-
 
     // Mandar de volta Input
     this.estadoMoradiaSelectInput = estadoMoradiaSelecionada;
-
-
-    //this.paciente.alergias = alergiasSelecionadas;
-    //   this.paciente.alergias.push(alergiasSelecionadas);
-    //this.alergiasComponentMultiselect = [];
-    //  this.alergiasComponentMultiselect.push(alergiasSelecionadas);
   }
 
   funcaoSexo(sexoSelecionado): void{

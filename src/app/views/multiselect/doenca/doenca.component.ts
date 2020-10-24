@@ -26,7 +26,6 @@ export class DoencaComponent implements OnInit {
     this.doencasService.doencasBuscarTodos().subscribe(
       (reponse) => {
         this.doencas = reponse;
-        //  this.alergias = this.alergias;
       },
       (error) => {
         console.log(error);

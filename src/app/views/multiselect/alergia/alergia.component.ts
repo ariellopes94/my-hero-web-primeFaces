@@ -18,8 +18,6 @@ export class AlergiaComponent implements OnInit {
   alergias: Alergia[];
   alergiasSelecionadas: Alergia[];
 
-  
-
   constructor(
     private primengConfig: PrimeNGConfig,
     public alergiasService: AlergiasService
@@ -34,7 +32,6 @@ export class AlergiaComponent implements OnInit {
     this.alergiasService.alergiasBuscarTodos().subscribe(
       (reponse) => {
         this.alergias = reponse;
-        //  this.alergias = this.alergias;
       },
       (error) => {
         console.log(error);

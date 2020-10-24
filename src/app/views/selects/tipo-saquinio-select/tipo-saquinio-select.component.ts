@@ -23,7 +23,6 @@ export class TipoSaquinioSelectComponent implements OnInit {
   tipoSaquinioEnum: TipoSaquinio[];
 
   ngOnInit(): void {
-    alert("TEST ARIEL " + this.tipoSanquinioInput);
 
     this.tipoSanquinioSelecionado = this.tipoSanquinioInput;
   }
