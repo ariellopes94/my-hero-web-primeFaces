@@ -14,6 +14,7 @@
                 quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 
     <form>
+        <p-toast></p-toast>
     <div class="p-grid"  *ngIf="activeIndex == 0">
         <div class="p-col-12 p-md-12 p-lg-12">
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
@@ -84,14 +85,10 @@
             <label for="float-input">Nascimento</label>
         </div>
             -->
-
-            {{mesSelecionado}} Mes selecionada
          <div class="p-col-12 p-md-2 p-lg-2 p-float-label"> 
             <p-dropdown [options]="mes" [(ngModel)]="mesSelecionado" name="mes" placeholder="Mês" [style]="{ 'width': '100%'}"></p-dropdown>
         </div>
     
-        {{paciente.nascimento | json}}
-
         <!--ANO-->
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <p-inputMask mask="9999"  [(ngModel)]="ano" name="ano" [style]="{ 'width': '100%'}" > </p-inputMask>
@@ -138,21 +135,19 @@
 
 
         <div class="p-col-12 p-md-3 p-lg-3 p-float-label">
-            <input pPassword type="password" name="senha" [(ngModel)]="paciente.senha" [style]="{ 'width': '100%'}"/>
+            <input pPassword type="password" name="senha" weakLabel="Fraca" promptLabel="Insira uma senha"
+             mediumLabel="Média"  strongLabel="Forte" [(ngModel)]="paciente.senha" [style]="{ 'width': '100%'}"/>
             <label for="float-input">Senha</label>
         </div>
 
+    
         <div class="p-col-12 p-md-3 p-lg-3 p-float-label">
-            <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <input id="float-input" type="password" pInputText  [style]="{ 'width': '100%'}" [ngModel]="confirmarSenha" name="confirmar" (ngModelChange)="cofirmarPassword($event)"> 
             <label for="float-input">Confirmar</label>
         </div>
 
         <div class="p-col-12 p-md-10 p-lg-10"></div>
  
-        <div class="p-col-12 p-md-12 p-lg-7">
-            <input type="text" pInputText placeholder="Price"  >     
-        </div>
-
         <div class="p-col-12 p-md-12 p-lg-7">
             <app-telefone-de-contatos  [contatosDeEmergenciasInput]="contatosEmergenciaModalInput"  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
         </div>

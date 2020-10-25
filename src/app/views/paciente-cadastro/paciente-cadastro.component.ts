@@ -26,7 +26,8 @@ interface Mes {
 @Component({
   selector: 'app-paciente-cadastro',
   templateUrl: './paciente-cadastro.component.html',
-  styleUrls: ['./paciente-cadastro.component.css']
+  styleUrls: ['./paciente-cadastro.component.css'],
+  providers: [MessageService]
 })
 export class PacienteCadastroComponent implements OnInit {
 
@@ -63,10 +64,14 @@ export class PacienteCadastroComponent implements OnInit {
 
   mes: Mes[];
 
+  confirmarSenha: string;
 
-  constructor(private router: Router, private pacienteService: PacienteService) {}
+  constructor(private router: Router, private pacienteService: PacienteService,
+              private messageService: MessageService) {}
 
   ngOnInit(): void {
+
+    this.paciente.doadorDeOrgao =false;
 
     this.mes = [
       {label:'Janeiro', value:'01'},
@@ -208,6 +213,26 @@ export class PacienteCadastroComponent implements OnInit {
    console.log("===============================================================================")
    
   }
+  cofirmarPassword(senha:string){
+    this.confirmarSenha = senha;
+    
+    console.log
+    if(this.paciente.senha.length <= senha.length){
 
+      console.log("CAIU NO LOG")
+      if(this.paciente.senha == senha){
+        console.log("SENHA IGUAIS")
+        senha = ""
+      }
+
+      else{
+        this.messageService.add({severity:'error', summary: 'Error', detail: `As senhas não coincidem`});
+      }
+    
+    }
+
+    
+    
+  }
 }
 
