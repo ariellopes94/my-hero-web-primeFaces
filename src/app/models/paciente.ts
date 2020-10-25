@@ -10,6 +10,7 @@ export class Paciente {
   cpf: string; 
   nome: string;
   email: string;
+  imageAvatarUrl: string;
   senha: string;
   doadorDeOrgao: boolean;
   telefone: string;

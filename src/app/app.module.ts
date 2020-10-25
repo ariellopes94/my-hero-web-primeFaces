@@ -36,6 +36,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
 import { PasswordModule } from 'primeng/password';
 import { MenubarModule } from 'primeng/menubar';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 //Leitor qr code
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
@@ -48,6 +49,8 @@ import { MedicamentoComponent } from './views/multiselect/medicamento/medicament
 import { TelefoneDeContatosComponent } from './views/telefone-de-contatos/telefone-de-contatos.component';
 import { EstadoDeMoradiaComponent } from './views/selects/estado-de-moradia/estado-de-moradia.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -90,6 +93,9 @@ import { ProfileComponent } from './views/profile/profile.component';
     CheckboxModule,
     PasswordModule,
     MenubarModule,
+    InputTextareaModule,
+    InputNumberModule,
+    ToastModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })

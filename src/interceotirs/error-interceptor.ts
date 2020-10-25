@@ -16,6 +16,11 @@ export class ErrorInterceptor implements HttpInterceptor {
             if (err.status === 401) {
              
                 console.log("Error detectado pelo Interceptor")
+                console.log("=======================================================")
+
+                
+                err.Message
+                console.log("=======================================================")
                 // auto logout if 401 response returned from api
                // this.authenticationService.logout();
                // location.reload(true);
@@ -25,15 +30,12 @@ export class ErrorInterceptor implements HttpInterceptor {
             if (err.status === 403) {
                 alert("ERROR 403")
             }
-            console.log("ERROR" + err.error);
-            console.log("erar para aparecer mensagem" + err.error.message);
-
-            let errorObj = err;
-            console.log("ERROROBJ " + err.error.timestamp)
+            
+            //console.log("ERROROBJ " + err.error.timestamp)
             const error = err.error || err.statusText;
-
+            //JSON.parse(error)
             //
-            return throwError(error);
+            return throwError(JSON.parse(error));
         }))
     }
 

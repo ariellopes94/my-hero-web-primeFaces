@@ -7,6 +7,7 @@
   </header>
 
   <div class="p-grid  p-justify-center containnerLogin" [style]="alinanharContainer">
+    <p-toast></p-toast>
     <div class="p-col-11 p-sm-6 p-md-4">
       <p-card [style]="{'border-radius': '10px', 'background' : '#f5f6fa'}">
         <div class="p-grid">
@@ -21,7 +22,7 @@
             <label for="" class="fontLogin">Senha:</label>
             <input [(ngModel)]="creds.senha" name="senha" class="p-col-12" type="password" pInputText />
           </div>
-          <div class="p-col-12 sizes" style="text-align: center;">
+          <div class="p-col-12 sizes" style="text-align: center;" *ngIf="liberarCamposLogin == false">
             <p-button label="ENTRAR"  [style]="{ 'width': '80%', 'background': 'linear-gradient(208.07deg,#03a9f4, #2196F3)'}" styleClass="p-button-lg" (click)= "alterarCss()"></p-button>
           </div>
           <div class="p-col-12 sizes"  *ngIf="liberarCamposLogin == true" style="text-align: center;">

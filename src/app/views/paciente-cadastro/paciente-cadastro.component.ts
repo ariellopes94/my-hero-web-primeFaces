@@ -1,3 +1,4 @@
+import { PacienteService } from './../../services/paciente.service';
 import { EstadoDeMoradia } from './../../models/Enum/estaoDeMoradiaEnum';
 import { TipoSaquinio } from './../../models/Enum/tipoSanquinioEnum';
 import { AlergiasService } from './../../services/alergias.service';
@@ -9,13 +10,18 @@ import { Alergia } from './../../models/alergia.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MenuItem, MessageService } from 'primeng/api';
+import { MenuItem, MessageService, SelectItem } from 'primeng/api';
+import { stringify } from '@angular/compiler/src/util';
 
 interface Sexo {
   name: string,
   code: string
 }
 
+interface Mes {
+  label: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-paciente-cadastro',
@@ -36,7 +42,7 @@ export class PacienteCadastroComponent implements OnInit {
   
   sexo: Sexo[];
   sexoSelecionada: Sexo;
-//
+
   alergiasComponentMultiselect: Alergia[] = [];
   doencasComponentMultiselect: Doenca[] = [];
   medicamentosComponentMultiselect: Medicamento[] = [];
@@ -50,10 +56,36 @@ export class PacienteCadastroComponent implements OnInit {
   items: MenuItem[];
   activeIndex = 0;
 
-  constructor(private router: Router) {}
+  // Data de Nascimento
+  dia :number
+  mesSelecionado: Mes;
+  ano: number;
+
+  mes: Mes[];
+
+
+  constructor(private router: Router, private pacienteService: PacienteService) {}
 
   ngOnInit(): void {
 
+    this.mes = [
+      {label:'Janeiro', value:'01'},
+      {label:'Fevereiro', value:'02'},
+      {label:'Março', value:'03'},
+      {label:'Abril', value:'04'},
+      {label:'Maio', value:'05'},
+      {label:'Junho', value:'06'},
+      {label:'Julho', value:'07'},
+      {label:'Agosto', value:'08'},
+      {label:'Setembro', value:'09'},
+      {label:'Outubro', value:'10'},
+      {label:'Novembro', value:'11'},
+      {label:'Dezembro', value:'12'},
+
+  ];
+
+    //
+    this.paciente.imageAvatarUrl = 'www.imagem.url';
 
     this.items = [
       {
@@ -145,4 +177,37 @@ export class PacienteCadastroComponent implements OnInit {
     this.medicamentosSelecionadasInput = medicamentoSelecionada;
   }
 
+  removerMascara(){
+   this.paciente.cpf = this.paciente.cpf.replace(/\D/gim, '');
+
+   this.paciente.telefone = this.paciente.telefone.replace(/\D/gim, '');
+  }
+  
+  createPaciente():void{
+    this.removerMascara();
+    this.formatarDataParaEnvio();
+    this.pacienteService.create(this.paciente).subscribe(() => {
+     //this.paciente = new Paciente();
+     console.log("PACIENTE CRIADO");
+    })
+    resposta => {
+
+      let msg = 'Erro inesperado. Tente novamenta';
+  
+      if(resposta.error.message){
+        msg = resposta.error.message
+      }
+    }
+  }
+
+  formatarDataParaEnvio(){
+  //  1994-10-25
+   // ano-mes-dia
+
+ this.paciente.nascimento = `${this.ano}-${this.mesSelecionado}-${this.dia}`
+   console.log("===============================================================================")
+   
+  }
+
 }
+

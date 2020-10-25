@@ -5,10 +5,12 @@ import { PrimeNGConfig } from 'primeng/api';
 
 import { CredenciaisDTO } from './../../models/DTO/credenciais.dto';
 
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
   creds: CredenciaisDTO = {
@@ -26,7 +28,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private primengConfig: PrimeNGConfig,
     private router: Router,
-    public auth: AuthService
+    public auth: AuthService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -74,6 +77,7 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToUsuarioLogado(): void {
+    //this.showError();
     this.creds.cpf = this.creds.cpf.replace(/\D/gim, '');
     this.auth.authenticate(this.creds).subscribe(
       (response) => {
@@ -81,10 +85,18 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(['/paciente-logado']);
       },
-      (error) => {}
+      (error) => {
+          this.messageService.add({severity:'error', summary: 'Error', detail: `${error.message}`});
+          this.creds.senha = '';
+      }
     );
     console.log(this.creds);
   }
+
+  showError() {
+    console.log("Fui chamado")
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Message Content'});
+}
 
   navigateToPacienteCreate(): void {
     this.router.navigate(['/paciente-cadastro']);

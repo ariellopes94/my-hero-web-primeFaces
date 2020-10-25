@@ -1,27 +1,40 @@
+
+
 <div class="container">
     PESSSOA {{paciente |json}}
+
+    <div class="p-grid p-text-center p-justify-center containnerLogin">
+
+        <div class="p-col-11 p-sm-10 p-md-10"> 
+            <p-card [header]="paciente?.nome" [subheader]="paciente?.email" [style]="{width: '100%','margin-top' :'20px'}" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                  <!-- <img  alt="Card" src="https://image.flaticon.com/icons/svg/3011/3011270.svg"  class="avatar" >--> 
+                </ng-template>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+                quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                
     <form>
     <div class="p-grid"  *ngIf="activeIndex == 0">
         <div class="p-col-12 p-md-12 p-lg-12">
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
         </div>
 
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+        <div class="p-col-12 p-md-4 p-lg-4 p-float-label">
             <p-inputMask [(ngModel)]="paciente.cpf" name="cpf" mask="999.999.999-99" [style]="{ 'width': '100%'}"  ></p-inputMask>
             <label for="float-input">CPF</label>
         </div>
 
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+        <div class="p-col-12 p-md-4 p-lg-4 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.nome" name="nome" type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Nome</label>
         </div>
 
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+        <div class="p-col-12 p-md-4 p-lg-4 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.email" name="email" type="email" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">E-mail</label>
         </div>
 
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+        <div class="p-col-12 p-md-3 p-lg-3 p-float-label">
             <p-inputMask [(ngModel)]="paciente.telefone" name="telefone" mask="(99)9999-99999" [style]="{ 'width': '100%'}"  ></p-inputMask>
             <label for="float-input">Telefone</label>
         </div>
@@ -37,51 +50,114 @@
             <input id="float-input" [(ngModel)]="paciente.peso" name="peso" type="number" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Peso</label>
         </div>
+        <!--
+            <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <p-inputMask [(ngModel)]="paciente.cpf" name="cpf" mask="999.999.999-99" [style]="{ 'width': '100%'}"  ></p-inputMask>
+            <label for="float-input">CPF</label>
+        </div>
+        -->
 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input" [(ngModel)]="paciente.altura" name="altura"  type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <p-inputMask [(ngModel)]="paciente.altura"   name="altura" mask="9.99" [style]="{ 'width': '100%'}" ></p-inputMask>
             <label for="float-input">Altura</label>
         </div>
+            <!--DATA DE NASCIMENTO CRIAR-->
+          
+            <!--DIA-->
+        <div class="p-col-12 p-md-3 p-lg-3"></div>
 
+        <!--
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input [(ngModel)]="dia" name="nascimento" type="number" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Dia</label>
+        </div>
+    -->
+   
+      <div class="p-col-12 p-md-1 p-lg-1 p-float-label">
+            <p-inputMask mask="99" [(ngModel)]="dia" name="dia" [style]="{ 'width': '100%'}"></p-inputMask>
+            <label for="float-input">Dia</label>
+        </div>
+
+        <!--MES
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" [(ngModel)]="paciente.nascimento" name="nascimento" type="text" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Nascimento</label>
         </div>
+            -->
 
+            {{mesSelecionado}} Mes selecionada
+         <div class="p-col-12 p-md-2 p-lg-2 p-float-label"> 
+            <p-dropdown [options]="mes" [(ngModel)]="mesSelecionado" name="mes" placeholder="Mês" [style]="{ 'width': '100%'}"></p-dropdown>
+        </div>
+    
+        {{paciente.nascimento | json}}
+
+        <!--ANO-->
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <p-dropdown [options]="sexo" [(ngModel)]="sexoSelecionada" name="tipoSanguinio" placeholder="Select a City" optionLabel="name" [showClear]="true" (ngModelChange)="funcaoSexo($event)"></p-dropdown>
+            <p-inputMask mask="9999"  [(ngModel)]="ano" name="ano" [style]="{ 'width': '100%'}" > </p-inputMask>
+            <label for="float-input">Ano</label>
+        </div>
+        <!-- DATA ANTIGA FUNCIONANDO
+        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
+            <input id="float-input" [(ngModel)]="paciente.nascimento" name="nascimento" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Nascimento</label>
+        </div>
+         -->
+         <div class="p-col-12 p-md-6 p-lg-6"></div>
+
+        <div class="p-col-12 p-md-3 p-lg-3 p-float-label">
+            <p-dropdown [options]="sexo" [(ngModel)]="sexoSelecionada" name="tipoSanguinio" placeholder="Gênero" optionLabel="name" [showClear]="true" (ngModelChange)="funcaoSexo($event)"  [style]="{ 'width': '100%'}"></p-dropdown>
         </div>
 
-        <div class="p-col-12 p-md-2 p-lg-2">
+        <div class="p-col-12 p-md-3 p-lg-3">
             <app-tipo-saquinio-select [tipoSanquinioInput] = "tipoSanquinioSelectInput" (tipoSanquinioSelectOutput)="selecionadoTipoSanquinio($event)"></app-tipo-saquinio-select>
         </div> 
 
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <app-estado-de-moradia [estadoDeMoradiaInput]="estadoMoradiaSelectInput" (estadoDeMoradiaSelectOutput)="selecionadoEstadoMoradia($event)"></app-estado-de-moradia>
+        <div class="p-col-12 p-md-3 p-lg-3 p-float-label">
+            <app-estado-de-moradia [estadoDeMoradiaInput]="estadoMoradiaSelectInput" (estadoDeMoradiaSelectOutput)="selecionadoEstadoMoradia($event)"  [style]="{ 'width': '100%'}"></app-estado-de-moradia>
         </div>
 
+        <div class="p-col-12 p-md-3 p-lg-3"></div>
+
+        <div class="p-col-12 p-md-8 p-lg-8 p-float-label">
+            <textarea pInputTextarea type="text" name="observacao" [(ngModel)]="paciente.observacao" id="float-input" [style]="{ 'width': '100%'}" ></textarea>
+            <label for="float-input">Observação</label>
+        </div>
+
+        <div class="p-col-12 p-md-4 p-lg-4"></div>
+
+        <!--
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
             <input id="float-input" type="text" name="observacao" [(ngModel)]="paciente.observacao" pInputText  [style]="{ 'width': '100%'}" > 
             <label for="float-input">Observação</label>
         </div>
+        -->
+        
 
-        <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
-            <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+
+
+
+        <div class="p-col-12 p-md-3 p-lg-3 p-float-label">
+            <input pPassword type="password" name="senha" [(ngModel)]="paciente.senha" [style]="{ 'width': '100%'}"/>
             <label for="float-input">Senha</label>
         </div>
 
-        <h5>Password</h5>
-        <input pPassword type="password" name="senha" [(ngModel)]="paciente.senha" />
+        <div class="p-col-12 p-md-3 p-lg-3 p-float-label">
+            <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <label for="float-input">Confirmar</label>
+        </div>
 
+        <div class="p-col-12 p-md-10 p-lg-10"></div>
+ 
         <div class="p-col-12 p-md-12 p-lg-7">
-            <input type="text" pInputText placeholder="Price"  [style]="{ 'width': '100%'}">     
+            <input type="text" pInputText placeholder="Price"  >     
         </div>
 
         <div class="p-col-12 p-md-12 p-lg-7">
             <app-telefone-de-contatos  [contatosDeEmergenciasInput]="contatosEmergenciaModalInput"  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
         </div>
 
-        <button type="submit">SALVAR</button>
+        <button type="submit"  (click)="createPaciente()">SALVAR</button>
 
 
     </div>
@@ -117,7 +193,13 @@
 
 
 
-
+<ng-template pTemplate="footer">
+    <p-button label="Save" icon="pi pi-check"></p-button>
+    <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+</ng-template>
+</p-card>
+</div>
+</div>
 <!-- 
 
 <div *ngIf="activeIndex == 1" >
