@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
+import { Alergia } from './../../models/alergia.model';
 import { PacienteService } from './../../services/paciente.service';
 import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +19,9 @@ export class ProfileComponent implements OnInit {
 
 
   constructor( public storage: StorageService,
-               public pacienteService: PacienteService) { }
+               public pacienteService: PacienteService,
+               private authService: AuthService,
+               private router: Router) { }
 
   ngOnInit(): void {
 
@@ -24,7 +29,7 @@ export class ProfileComponent implements OnInit {
 
 
    // if(localUser && localUser.cpf){ pARA ELE BUSCAR O CPF
-      this.pacienteService.findByCpf(localUser.cpf)
+      this.pacienteService.findByCpf(localUser?.cpf)
           .subscribe(response => {
             this.paciente = response;
 
@@ -157,11 +162,19 @@ export class ProfileComponent implements OnInit {
           ]
       },
       {
-          label:'Quit',
-          icon:'pi pi-fw pi-power-off'
+          label:'Logout',
+          icon:'pi pi-fw pi-power-off',
+          command: (event) => {
+            this.logout()
+          }
       }
   ];
 
+    }
+
+    logout(){
+       this.authService.logout();
+       this.router.navigate(['']);
     }
   
 }

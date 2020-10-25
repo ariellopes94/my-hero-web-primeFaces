@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../app/services/auth.service';
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
@@ -9,7 +10,8 @@ import { catchError } from 'rxjs/operators';
 export class ErrorInterceptor implements HttpInterceptor {
 
 
-    constructor(private authenticationService:  AuthService) { }
+    constructor(private authenticationService:  AuthService,
+                 private router: Router ) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
@@ -28,7 +30,8 @@ export class ErrorInterceptor implements HttpInterceptor {
             }
 
             if (err.status === 403) {
-                alert("ERROR 403")
+                this.authenticationService.logout();
+                this.router.navigate(['']);
             }
             
             //console.log("ERROROBJ " + err.error.timestamp)
