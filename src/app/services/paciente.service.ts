@@ -22,17 +22,17 @@ export class PacienteService {
     );
   }
 
-  fichaDoPaciente(): Observable<FichaPacienteDTO> {
-    const numeroFichaPaciente: string = window.location.href;
+  fichaDoPaciente(numeroFichaPacienteUrl: string): Observable<FichaPacienteDTO> {
+    //const numeroFichaPaciente: string = window.location.href;
     return this.http.get<FichaPacienteDTO>(
-      `${API_CONFIG.baseUrl}/pacientes/fichaDoPaciente/a5f2c031XXMy-HERO-434eXXMy-HERO-4a97XXMy-HERO-a932XXMy-HERO-05b9efe81056`
+      `${API_CONFIG.baseUrl}/pacientes/fichaDoPaciente/${numeroFichaPacienteUrl}`
     );
     //XTR700
   }
 
-  gerarQrCode(): Observable<CartaoQrCode> {
+  gerarQrCode(cpf: string): Observable<CartaoQrCode> {
     return this.http.get<CartaoQrCode>(
-      `${API_CONFIG.baseUrl}/pacientes/gerarCodigoQrCode/41894941004`
+      `${API_CONFIG.baseUrl}/pacientes/gerarCodigoQrCode/${cpf}`
     );
   }
 

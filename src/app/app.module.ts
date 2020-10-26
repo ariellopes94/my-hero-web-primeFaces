@@ -51,6 +51,8 @@ import { EstadoDeMoradiaComponent } from './views/selects/estado-de-moradia/esta
 import { ProfileComponent } from './views/profile/profile.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
+import { CartaoQrCodeComponent } from './views/cartao-qr-code/cartao-qr-code.component';
+import { FichaPacienteComponent } from './views/ficha-paciente/ficha-paciente.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { ToastModule } from 'primeng/toast';
     TipoSaquinioSelectComponent,
     EstadoDeMoradiaComponent,
     ProfileComponent,
+    CartaoQrCodeComponent,
+    FichaPacienteComponent,
   ],
   imports: [
     BrowserModule,

@@ -66,8 +66,11 @@ export class ProfileComponent implements OnInit {
                   separator:true
               },
               {
-                  label:'Export',
-                  icon:'pi pi-fw pi-external-link'
+                  label:'Exportar Cartão Qr code',
+                  icon:'pi pi-fw pi-external-link',
+                  command: (event) => {
+                    this.gerarCartaoQrCode()
+                  }
               }
           ]
       },
@@ -177,4 +180,7 @@ export class ProfileComponent implements OnInit {
        this.router.navigate(['']);
     }
   
+    gerarCartaoQrCode(){
+        this.router.navigate(['/cartao-qr-code']);
+    }
 }
