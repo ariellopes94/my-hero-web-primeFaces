@@ -14,7 +14,7 @@
                 quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 
     <form>
-        <p-toast></p-toast>
+        <p-toast [style]="{width: '80vw'}" [baseZIndex]="10000"></p-toast>
     <div class="p-grid"  *ngIf="activeIndex == 0">
         <div class="p-col-12 p-md-12 p-lg-12">
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
