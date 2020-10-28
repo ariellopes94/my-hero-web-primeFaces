@@ -185,7 +185,9 @@ export class PacienteCadastroComponent implements OnInit {
   removerMascara(){
    this.paciente.cpf = this.paciente.cpf.replace(/\D/gim, '');
 
+   
    this.paciente.telefone = this.paciente.telefone.replace(/\D/gim, '');
+   
   }
   
   createPaciente():void{
