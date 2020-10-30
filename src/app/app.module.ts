@@ -16,6 +16,7 @@ import { PacienteCadastroComponent } from './views/paciente-cadastro/paciente-ca
 import { LeitorQrCodeComponent } from './views/leitor-qr-code/leitor-qr-code.component';
 import { PacienteFichaComponent } from './views/paciente-ficha/paciente-ficha.component';
 
+
 //PrimeFaces
 import { StepsModule } from 'primeng/steps';
 import { ButtonModule } from 'primeng/button';

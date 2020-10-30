@@ -1,12 +1,12 @@
 
-
+ <p-toast></p-toast>
 <div class="container">
     PESSSOA {{paciente |json}}
 
     <div class="p-grid p-text-center p-justify-center containnerLogin">
 
         <div class="p-col-11 p-sm-10 p-md-10"> 
-            <p-card [header]="paciente?.nome" [subheader]="paciente?.email" [style]="{width: '100%','margin-top' :'20px'}" styleClass="p-card-shadow">
+            <p-card [header]="paciente?.nome" [subheader]="paciente?.email" [style]="{width: '100%','margin-top' :'20px'}" styleClass="p-card-shadow" >
                 <ng-template pTemplate="header">
                   <!-- <img  alt="Card" src="https://image.flaticon.com/icons/svg/3011/3011270.svg"  class="avatar" >--> 
                 </ng-template>
@@ -20,18 +20,18 @@
             <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
         </div>
 
-        <div class="p-col-12 p-md-4 p-lg-4 p-float-label">
-            <p-inputMask [(ngModel)]="paciente.cpf" name="cpf" mask="999.999.999-99" [style]="{ 'width': '100%'}"  ></p-inputMask>
+        <div class="p-col-12 p-md-4 p-lg-4 p-float-label" >
+            <p-inputMask [(ngModel)]="paciente.cpf" name="cpf" mask="999.999.999-99"  [style]= "valitadorCampoCpf === false ? { 'width': '100%',   'border-color': ''} : { 'width': '100%',   'border-color': 'red'} "></p-inputMask>
             <label for="float-input">CPF</label>
         </div>
 
         <div class="p-col-12 p-md-4 p-lg-4 p-float-label">
-            <input id="float-input" [(ngModel)]="paciente.nome" name="nome" type="text" pInputText  [style]="{ 'width': '100%'}" > 
+            <input id="float-input" [(ngModel)]="paciente.nome" name="nome" type="text" pInputText [style]= "valitadorCampoNome === false ? { 'width': '100%',   'border-color': ''} : { 'width': '100%',   'border-color': 'red'}" > 
             <label for="float-input">Nome</label>
         </div>
 
         <div class="p-col-12 p-md-4 p-lg-4 p-float-label">
-            <input id="float-input" [(ngModel)]="paciente.email" name="email" type="email" pInputText  [style]="{ 'width': '100%'}" > 
+            <input id="float-input" [(ngModel)]="paciente.email" name="email" type="email" pInputText  [style]= "valitadorCampoEmail === false ? { 'width': '100%',   'border-color': ''} : { 'width': '100%',   'border-color': 'red'} "> 
             <label for="float-input">E-mail</label>
         </div>
 

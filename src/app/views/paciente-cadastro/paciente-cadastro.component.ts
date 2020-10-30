@@ -11,7 +11,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuItem, MessageService, SelectItem } from 'primeng/api';
-import { stringify } from '@angular/compiler/src/util';
+
+
+import * as EmailValidator from 'email-validator';
 
 interface Sexo {
   name: string,
@@ -30,6 +32,11 @@ interface Mes {
   providers: [MessageService]
 })
 export class PacienteCadastroComponent implements OnInit {
+
+  //Validacao do Formulario
+  valitadorCampoCpf:boolean =false;
+  valitadorCampoNome: boolean = false;
+  valitadorCampoEmail: boolean = false;
 
   alergiasSelecionadasInput : Alergia[] ;
   doencasSelecionadasInput : Doenca[];
@@ -67,7 +74,13 @@ export class PacienteCadastroComponent implements OnInit {
   confirmarSenha: string;
 
   constructor(private router: Router, private pacienteService: PacienteService,
-              private messageService: MessageService) {}
+              private messageService: MessageService) {
+
+                this.paciente.cpf='';
+                this.paciente.nome ='';
+                this.paciente.email='';
+
+              }
 
   ngOnInit(): void {
 
@@ -183,16 +196,16 @@ export class PacienteCadastroComponent implements OnInit {
   }
 
   removerMascara(){
+  
    this.paciente.cpf = this.paciente.cpf.replace(/\D/gim, '');
-
-   
    this.paciente.telefone = this.paciente.telefone.replace(/\D/gim, '');
-   
+  
   }
   
   createPaciente():void{
     this.removerMascara();
     this.formatarDataParaEnvio();
+    this.validatorForm();
     this.pacienteService.create(this.paciente).subscribe(() => {
      //this.paciente = new Paciente();
      console.log("PACIENTE CRIADO");
@@ -206,6 +219,91 @@ export class PacienteCadastroComponent implements OnInit {
       }
     }
   }
+
+  validatorForm(){
+
+    this.emailValidador();
+    this.nomeValidador();
+    
+  this.cpfValidador();
+  
+  
+
+ }
+
+  nomeValidador(){
+    if(this.paciente.nome.length <= 8 && this.paciente.nome.length > 0){
+      this.valitadorCampoNome = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Nome tem que ser completo'});
+      return;
+    }
+    if(this.paciente.nome === ''){
+      this.valitadorCampoNome = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Nome é obrigatório '});
+      return;
+    }
+   else{
+      this.valitadorCampoNome = false;
+    }
+  }
+
+ cpfValidador(){
+
+  var cpf:string = this.paciente.cpf;
+  alert(cpf)
+    if(cpf === ''){
+      this.valitadorCampoCpf = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Cpf é obrigatório '});
+      return;
+    }
+
+    //cpf = cpf.replace(/\D/g, '');
+    if(cpf.toString().length != 11 || /^(\d)\1{10}$/.test(cpf)){ 
+      this.valitadorCampoCpf = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'CPF INVALIDO'});
+      return;
+    };
+  
+    //this.valitadorCampoCpf = false;8
+    var result = true;
+    [9,10].forEach(function(j){
+        var soma = 0, r;
+        cpf.split(/(?=)/).splice(0,j).forEach(function(e, i){
+            soma += parseInt(e) * ((j+2)-(i+1));
+        });
+        r = soma % 11;
+        r = (r <2)?0:11-r;
+        if(r != cpf.substring(j, j+1)){
+          this.valitadorCampoCpf = true;
+          this.messageService.add({severity:'error', summary: 'Error', detail: 'CPF INVALIDO'});
+          return;
+        }
+       
+     });
+    
+      
+    
+}
+
+ emailValidador(){
+  
+  if(EmailValidator.validate(this.paciente.email) == false) {
+    this.valitadorCampoEmail = true;
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Email é inválido'});
+    return;
+  }
+  
+
+  if(this.paciente.email === ''){
+    this.valitadorCampoEmail = true;
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Email é obrigatório '});
+    return;
+  }
+  
+  else{
+    this.valitadorCampoEmail = false;
+  }
+}
 
   formatarDataParaEnvio(){
   //  1994-10-25

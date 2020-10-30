@@ -25,6 +25,7 @@
     "@auth0/angular-jwt": "^5.0.1",
     "@fortawesome/fontawesome-free": "^5.15.0",
     "@zxing/ngx-scanner": "3.0.0",
+    "email-validator": "^2.0.4",
     "pdfmake": "^0.1.68",
     "pdfmake-wrapper": "^2.0.0",
     "primeflex": "^2.0.0",
