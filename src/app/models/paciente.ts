@@ -14,8 +14,8 @@ export class Paciente {
   senha: string;
   doadorDeOrgao: boolean;
   telefone: string;
-  peso: number;
-  altura: number;
+  peso: string;
+  altura: string;
   nascimento: string;
   sexo: string;
   tipoSanguinio: number;

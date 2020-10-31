@@ -34,9 +34,15 @@ interface Mes {
 export class PacienteCadastroComponent implements OnInit {
 
   //Validacao do Formulario
-  valitadorCampoCpf:boolean =false;
+  valitadorCampoCpf: boolean = false;
   valitadorCampoNome: boolean = false;
   valitadorCampoEmail: boolean = false;
+  valitadorCampoTelefone: boolean = false;
+  valitadorCampoPeso: boolean = false;
+  valitadorCampoAltura: boolean = false;
+  valitadorCampoDataNascimento: boolean = false;
+  valitadorCampoGenero: boolean = false;
+  valitadorTipoSanquinio: boolean = false;
 
   alergiasSelecionadasInput : Alergia[] ;
   doencasSelecionadasInput : Doenca[];
@@ -76,10 +82,15 @@ export class PacienteCadastroComponent implements OnInit {
   constructor(private router: Router, private pacienteService: PacienteService,
               private messageService: MessageService) {
 
-                this.paciente.cpf='';
-                this.paciente.nome ='';
-                this.paciente.email='';
-
+                this.paciente.cpf = '';
+                this.paciente.nome = '';
+                this.paciente.email = '';
+                this.paciente.telefone = '';
+                this.paciente.peso = '';
+                this.paciente.altura = '';
+                this.paciente.nascimento = '';
+                this.paciente.sexo = '';
+                this.paciente.tipoSanguinio = 0;
               }
 
   ngOnInit(): void {
@@ -224,11 +235,13 @@ export class PacienteCadastroComponent implements OnInit {
 
     this.emailValidador();
     this.nomeValidador();
-    
-  this.cpfValidador();
-  
-  
-
+    this.cpfValidador();
+    this.telefoneValidador();
+    this.pesoValidador();
+    this.alturaValidador();
+    this.dataNascimentoValidador();
+    this.generoValidador();
+    this.tipoSaquinioValidador();
  }
 
   nomeValidador(){
@@ -264,8 +277,7 @@ export class PacienteCadastroComponent implements OnInit {
       return;
     };
   
-    //this.valitadorCampoCpf = false;8
-    var result = true;
+    this.valitadorCampoCpf = false;
     [9,10].forEach(function(j){
         var soma = 0, r;
         cpf.split(/(?=)/).splice(0,j).forEach(function(e, i){
@@ -276,7 +288,6 @@ export class PacienteCadastroComponent implements OnInit {
         if(r != cpf.substring(j, j+1)){
           this.valitadorCampoCpf = true;
           this.messageService.add({severity:'error', summary: 'Error', detail: 'CPF INVALIDO'});
-          return;
         }
        
      });
@@ -294,7 +305,7 @@ export class PacienteCadastroComponent implements OnInit {
   }
   
 
-  if(this.paciente.email === ''){
+  if(this.paciente.email == ''){
     this.valitadorCampoEmail = true;
     this.messageService.add({severity:'error', summary: 'Error', detail: 'Email é obrigatório '});
     return;
@@ -305,6 +316,74 @@ export class PacienteCadastroComponent implements OnInit {
   }
 }
 
+telefoneValidador(){
+  
+  if(this.paciente.telefone ==null || this.paciente.telefone ==''){
+    this.valitadorCampoTelefone = true;
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Telefone é obrigatório'});  
+    return; 
+  }
+  else if(this.valitadorCampoTelefone == true){
+    this.valitadorCampoTelefone = false;
+  }
+}
+
+pesoValidador(){
+
+  if(this.paciente.peso =='' || this.paciente.peso == null){
+    this.valitadorCampoPeso = true;
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Peso é obrigatório'}); 
+    return;
+  }
+  else if(this.valitadorCampoPeso == true){
+    this.valitadorCampoPeso = false;
+  }
+}
+
+  alturaValidador(){
+
+    if(this.paciente.altura ==''){
+      this.valitadorCampoAltura = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Altura é obrigatório'}); 
+      return;
+    }
+    else if(this.valitadorCampoAltura == true){
+      this.valitadorCampoAltura = false;
+    }
+  }
+
+  dataNascimentoValidador(){
+    if(this.paciente.nascimento =='' || this.paciente.nascimento.match("undefined") || this.paciente.nascimento.length !=10){
+      this.valitadorCampoDataNascimento = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Nascimento é obrigatório'}); 
+      return;
+    }
+    else if(this.valitadorCampoDataNascimento == true){
+      this.valitadorCampoDataNascimento = false;
+    }
+  }
+
+  generoValidador(){
+    if(this.paciente.sexo ==''){
+      this.valitadorCampoGenero = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Gênero é obrigatório'}); 
+      return;
+    }
+    else if(this.valitadorCampoGenero == true){
+      this.valitadorCampoGenero = false;
+    }
+  }
+
+  tipoSaquinioValidador(){
+    if(this.paciente.tipoSanguinio === 0){
+      this.valitadorTipoSanquinio = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Tipo Saquinio é obrigatório'}); 
+      return;
+    }
+    else if(this.valitadorTipoSanquinio == true){
+      this.valitadorCampoGenero = false;
+    }
+  }
   formatarDataParaEnvio(){
   //  1994-10-25
    // ano-mes-dia

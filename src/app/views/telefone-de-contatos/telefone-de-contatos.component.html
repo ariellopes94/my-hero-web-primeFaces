@@ -3,7 +3,7 @@
  
 
 <p-accordion>
-    <p-accordionTab header="Header I" [selected]="true">
+    <p-accordionTab header="Contatos emergência" [selected]="true">
         <div class="p-grid">
         <!-- 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
@@ -51,8 +51,8 @@
 
      <!--  <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog> -->
 
-        <p-dialog header="Compatibilidade" position="top" [(visible)]="displayModal" [modal]="false" [style]="{width: '70vw'}" [baseZIndex]="10000"
-        [draggable]="false" [resizable]="false" resizable="false">
+        <p-dialog header="Compatibilidade" position="top" [(visible)]="displayModal" [modal]="true" [style]="{width: '100%'}" [baseZIndex]="100000"
+        [draggable]="false" [resizable]="true" [showHeader]= "false" [maximizable]="true">
 
 <!--
             <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
@@ -62,7 +62,7 @@
         -->
             <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
                 <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.nome"> 
-                <label for="float-input">Nomee</label>
+                <label for="float-input">Nome</label>
             </div>
 
             <!--
