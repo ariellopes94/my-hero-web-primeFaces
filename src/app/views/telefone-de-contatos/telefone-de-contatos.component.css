@@ -1,0 +1,10 @@
+.mydialog {
+    width: 50vw;
+    background-color: red;
+}
+
+@media screen and (max-width: 40em) {
+    .mydialog {
+        width: 75vw;
+    }
+}

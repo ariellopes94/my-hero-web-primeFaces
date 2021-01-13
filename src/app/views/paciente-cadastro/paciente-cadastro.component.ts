@@ -11,7 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuItem, MessageService, SelectItem } from 'primeng/api';
-
+import { cpf } from 'cpf-cnpj-validator'; 
 
 import * as EmailValidator from 'email-validator';
 
@@ -33,10 +33,13 @@ interface Mes {
 })
 export class PacienteCadastroComponent implements OnInit {
 
+  
   //Validacao do Formulario
   valitadorCampoCpf: boolean = false;
   valitadorCampoNome: boolean = false;
   valitadorCampoEmail: boolean = false;
+  valitadorCampoPassword: boolean = false;
+  valitadorCampoContatoDeEmergencia: boolean =false;
   valitadorCampoTelefone: boolean = false;
   valitadorCampoPeso: boolean = false;
   valitadorCampoAltura: boolean = false;
@@ -91,6 +94,7 @@ export class PacienteCadastroComponent implements OnInit {
                 this.paciente.nascimento = '';
                 this.paciente.sexo = '';
                 this.paciente.tipoSanguinio = 0;
+                
               }
 
   ngOnInit(): void {
@@ -159,6 +163,9 @@ export class PacienteCadastroComponent implements OnInit {
     console.log(form);
   }
 
+  verrificarQueCpfValido(): boolean{
+    return cpf.isValid(this.paciente.cpf);
+  }
   selecionadoTipoSanquinio(tipoSanquinioSelecionada): void {
     this.paciente.tipoSanguinio = tipoSanquinioSelecionada.value;
   
@@ -219,14 +226,16 @@ export class PacienteCadastroComponent implements OnInit {
     this.validatorForm();
     this.pacienteService.create(this.paciente).subscribe(() => {
      //this.paciente = new Paciente();
-     console.log("PACIENTE CRIADO");
+     this.router.navigate(['/paciente-logado']);
+     this.messageService.add({severity:'success', summary: 'Service Message', detail: 'Usuário Criado'});
+   
     })
     resposta => {
 
       let msg = 'Erro inesperado. Tente novamenta';
-  
+      this.messageService.add({severity:'error', summary: 'Error', detail: `RRRRRRRRRRSSSSSSS`});
       if(resposta.error.message){
-        msg = resposta.error.message
+        this.messageService.add({severity:'error', summary: 'Error', detail: `${resposta.error.message}`});
       }
     }
   }
@@ -242,6 +251,8 @@ export class PacienteCadastroComponent implements OnInit {
     this.dataNascimentoValidador();
     this.generoValidador();
     this.tipoSaquinioValidador();
+    this.passwordValidador();
+    this.contatoDeEmergenciaValidador();
  }
 
   nomeValidador(){
@@ -261,7 +272,6 @@ export class PacienteCadastroComponent implements OnInit {
   }
 
  cpfValidador(){
-
   var cpf:string = this.paciente.cpf;
   alert(cpf)
     if(cpf === ''){
@@ -269,9 +279,14 @@ export class PacienteCadastroComponent implements OnInit {
       this.messageService.add({severity:'error', summary: 'Error', detail: 'Cpf é obrigatório '});
       return;
     }
-
+    
+    else if(!this.verrificarQueCpfValido()){
+      this.valitadorCampoCpf = true;
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'CPF INVALIDO'});
+      return;
+    }
     //cpf = cpf.replace(/\D/g, '');
-    if(cpf.toString().length != 11 || /^(\d)\1{10}$/.test(cpf)){ 
+     else if(cpf.toString().length != 11 || /^(\d)\1{10}$/.test(cpf) ){ 
       this.valitadorCampoCpf = true;
       this.messageService.add({severity:'error', summary: 'Error', detail: 'CPF INVALIDO'});
       return;
@@ -296,6 +311,8 @@ export class PacienteCadastroComponent implements OnInit {
     
 }
 
+
+
  emailValidador(){
   
   if(EmailValidator.validate(this.paciente.email) == false) {
@@ -315,6 +332,30 @@ export class PacienteCadastroComponent implements OnInit {
     this.valitadorCampoEmail = false;
   }
 }
+
+passwordValidador(){
+  if(this.paciente.senha == null || this.paciente.senha =='') {
+    this.valitadorCampoPassword = true;
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Senha é obrigatório'});  
+    return; 
+  }
+  else if(this.valitadorCampoPassword == true){
+    this.valitadorCampoPassword = false;
+}
+}
+
+contatoDeEmergenciaValidador(){
+
+   if(this.paciente.contatosDeEmergencias.length >= 1){
+    this.valitadorCampoContatoDeEmergencia = false;
+}
+else{
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Contato de emergencia é obrigatório'});  
+    this.valitadorCampoContatoDeEmergencia = true;
+  }
+ 
+}
+
 
 telefoneValidador(){
   

@@ -1,12 +1,10 @@
 
  <p-toast></p-toast>
 <div class="container">
-    PESSSOA {{paciente |json}}
-
     <div class="p-grid p-text-center p-justify-center containnerLogin">
 
         <div class="p-col-11 p-sm-10 p-md-10"> 
-            <p-card [header]="paciente?.nome" [subheader]="paciente?.email" [style]="{width: '100%','margin-top' :'20px'}" styleClass="p-card-shadow" >
+            <p-card [header]="paciente?.nome" [subheader]="paciente?.email" [style]="{'width': '100%','margin-top' :'20px'}" styleClass="p-card-shadow" >
                 <ng-template pTemplate="header">
                   <!-- <img  alt="Card" src="https://image.flaticon.com/icons/svg/3011/3011270.svg"  class="avatar" >--> 
                 </ng-template>
@@ -177,8 +175,9 @@
         <div class="p-col-12 p-md-12 p-lg-12">
             <app-telefone-de-contatos  [contatosDeEmergenciasInput]="contatosEmergenciaModalInput"  (contatosDeEmergenciasOutput)="funcaoContatoDeEmergencia($event)"></app-telefone-de-contatos>
         </div>
-
+<!--
         <button type="submit"  (click)="createPaciente()">SALVAR</button>
+-->
 
     </div>
 
@@ -191,11 +190,18 @@
 </form>
 
 
-
-<ng-template pTemplate="footer">
+<!--
+    <ng-template pTemplate="footer">
     <p-button label="Save" icon="pi pi-check"></p-button>
     <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
 </ng-template>
+
+-->
+<ng-template pTemplate="footer">
+    <button pButton type="button" label="Anterior" class="p-d-flex p-jc-start p-d-inline-flex"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
+    <p-button label="Próximo" class="p-d-flex p-jc-end p-d-inline-flex" (click)="alterar(+1)" *ngIf="activeIndex < 1"  [style]="{'margin-left': '.5em'}"></p-button>   
+    <p-button type="submit" label="Salvar" icon="pi pi-check" *ngIf="activeIndex > 0" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"  (click)="createPaciente()"></p-button>
+</ng-template>                                                                                     
 </p-card>
 </div>
 </div>
@@ -213,8 +219,6 @@ COLUNA 3
 
 
 
-<button pButton type="button" label="<" class="p-d-flex p-jc-start p-d-inline-flex"  (click)="alterar(-1)" *ngIf="activeIndex > 0" ></button>
-<p-button label=">" class="p-d-flex p-jc-end p-d-inline-flex" (click)="alterar(+1)" *ngIf="activeIndex < 2"></p-button>
 
 </div>
 

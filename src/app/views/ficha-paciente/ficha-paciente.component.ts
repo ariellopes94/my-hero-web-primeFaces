@@ -27,7 +27,7 @@ export class FichaPacienteComponent implements OnInit {
     let numeroFichaPacienteUrl: string = window.location.href;
     var codigoDoUsuarioUrl = numeroFichaPacienteUrl.split("/ficha-paciente/")[1];
 
-    //console.log("VIM DO COMPONENTE  "+codigoDoUsuarioUrl)
+    console.log("VIM DO COMPONENTE  "+codigoDoUsuarioUrl)
     
     this.pacienteService.fichaDoPaciente(codigoDoUsuarioUrl)
     .subscribe(reponse => {
