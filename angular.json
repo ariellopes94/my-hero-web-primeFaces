@@ -48,9 +48,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico", 
-              "assets",
               "src/assets",
-              "_redirects",
+              "src/_redirects",
                "src/manifest.webmanifest"],
             "styles": [
               "node_modules/primeng/resources/themes/md-light-indigo/theme.css",
