@@ -1,11 +1,13 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { EstadoDeMoradia } from './../../../models/Enum/estaoDeMoradiaEnum';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+/*
 interface EstadoDeMoradia {
   name: string;
   code: string;
   id: string;
 }
-
+*/
 @Component({
   selector: 'app-estado-de-moradia',
   templateUrl: './estado-de-moradia.component.html',
@@ -13,12 +15,19 @@ interface EstadoDeMoradia {
 })
 export class EstadoDeMoradiaComponent implements OnInit {
   @Output() estadoDeMoradiaSelectOutput = new EventEmitter();
+
+  @Input() estadoDeMoradiaInput:EstadoDeMoradia;
+
   selectedEstadoMoradia: EstadoDeMoradia;
   estadoDeMoradia: EstadoDeMoradia[];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.selectedEstadoMoradia = this.estadoDeMoradiaInput;
+  }
 
   constructor() {
+
+
     this.estadoDeMoradia = [
       { name: 'Acre', code: 'ACRE', id: '1' },
       { name: 'Alagoas', code: 'ALAGOAS', id: '2' },

@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
+import { Alergia } from './../../models/alergia.model';
 import { PacienteService } from './../../services/paciente.service';
 import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,22 +19,24 @@ export class ProfileComponent implements OnInit {
 
 
   constructor( public storage: StorageService,
-               public pacienteService: PacienteService) { }
+               public pacienteService: PacienteService,
+               private authService: AuthService,
+               private router: Router) { }
 
   ngOnInit(): void {
 
     let localUser =  this.storage.getLocalUser();
 
 
-    if(localUser && localUser.cpf){
-      this.pacienteService.findByCpf(localUser.cpf)
+   // if(localUser && localUser.cpf){ pARA ELE BUSCAR O CPF
+      this.pacienteService.findByCpf(localUser?.cpf)
           .subscribe(response => {
             this.paciente = response;
 
             //BuscarImage
           },
           error => {});
-   }
+ //  }
 
     this.items = [
       {
@@ -61,8 +66,11 @@ export class ProfileComponent implements OnInit {
                   separator:true
               },
               {
-                  label:'Export',
-                  icon:'pi pi-fw pi-external-link'
+                  label:'Exportar Cartão Qr code',
+                  icon:'pi pi-fw pi-external-link',
+                  command: (event) => {
+                    this.gerarCartaoQrCode()
+                  }
               }
           ]
       },
@@ -157,11 +165,22 @@ export class ProfileComponent implements OnInit {
           ]
       },
       {
-          label:'Quit',
-          icon:'pi pi-fw pi-power-off'
+          label:'Logout',
+          icon:'pi pi-fw pi-power-off',
+          command: (event) => {
+            this.logout()
+          }
       }
   ];
 
     }
+
+    logout(){
+       this.authService.logout();
+       this.router.navigate(['']);
+    }
   
+    gerarCartaoQrCode(){
+        this.router.navigate(['/cartao-qr-code']);
+    }
 }

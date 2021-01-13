@@ -7,7 +7,7 @@ export interface FichaPacienteDTO {
 
     id: string;
     nome: string;
-    idade: number
+    idade: number;
     doadorDeOrgao: boolean;
     telefone: string;
     peso: number;

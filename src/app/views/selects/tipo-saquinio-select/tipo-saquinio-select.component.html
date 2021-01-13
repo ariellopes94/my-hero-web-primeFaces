@@ -1,5 +1,6 @@
 <p-dropdown  [options]="tipoSaquinioEnum" [style]="{'width':'100%'}" [(ngModel)]="tipoSanquinioSelecionado" optionLabel="name" 
-[filter]="true" [showClear]="true" placeholder="Select a Country" (ngModelChange)="seuMetodo($event)">
+[filter]="true" [showClear]="true" placeholder="Tipo sanguíneo" (ngModelChange)="seuMetodo($event)">
+   
     <ng-template pTemplate="selectedItem" >
         <div class="tipoSaquinio-item tipoSaquinio-item-value"  *ngIf="tipoSanquinioSelecionado">
             <div>{{tipoSanquinioSelecionado.name}}</div>

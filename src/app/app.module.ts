@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './../interceotirs/auth-interceptor';
 import { AuthService } from './services/auth.service';
 import { StorageService } from './services/storage.service';
 import { ErrorInterceptor } from './../interceotirs/error-interceptor';
@@ -14,6 +15,7 @@ import { LoginComponent } from './views/login/login.component';
 import { PacienteCadastroComponent } from './views/paciente-cadastro/paciente-cadastro.component';
 import { LeitorQrCodeComponent } from './views/leitor-qr-code/leitor-qr-code.component';
 import { PacienteFichaComponent } from './views/paciente-ficha/paciente-ficha.component';
+
 
 //PrimeFaces
 import { StepsModule } from 'primeng/steps';
@@ -35,6 +37,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
 import { PasswordModule } from 'primeng/password';
 import { MenubarModule } from 'primeng/menubar';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 //Leitor qr code
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
@@ -47,6 +50,10 @@ import { MedicamentoComponent } from './views/multiselect/medicamento/medicament
 import { TelefoneDeContatosComponent } from './views/telefone-de-contatos/telefone-de-contatos.component';
 import { EstadoDeMoradiaComponent } from './views/selects/estado-de-moradia/estado-de-moradia.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ToastModule } from 'primeng/toast';
+import { CartaoQrCodeComponent } from './views/cartao-qr-code/cartao-qr-code.component';
+import { FichaPacienteComponent } from './views/ficha-paciente/ficha-paciente.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +69,8 @@ import { ProfileComponent } from './views/profile/profile.component';
     TipoSaquinioSelectComponent,
     EstadoDeMoradiaComponent,
     ProfileComponent,
+    CartaoQrCodeComponent,
+    FichaPacienteComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,12 +98,18 @@ import { ProfileComponent } from './views/profile/profile.component';
     CheckboxModule,
     PasswordModule,
     MenubarModule,
+    InputTextareaModule,
+    InputNumberModule,
+    ToastModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    AuthInterceptor, //DELETAR
+    ErrorInterceptor, //DELETAR
     StorageService,
     AuthService
   ],

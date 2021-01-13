@@ -1,9 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TipoSaquinio } from './../../../models/Enum/tipoSanquinioEnum';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+/*
 interface TipoSaquinio {
   name: string;
   value: string;
 }
+*/
 
 @Component({
   selector: 'app-tipo-saquinio-select',
@@ -11,12 +14,18 @@ interface TipoSaquinio {
   styleUrls: ['./tipo-saquinio-select.component.css']
 })
 export class TipoSaquinioSelectComponent implements OnInit {
+  
   @Output() tipoSanquinioSelectOutput = new EventEmitter();
+
+  @Input() tipoSanquinioInput: TipoSaquinio;
 
   tipoSanquinioSelecionado: TipoSaquinio;
   tipoSaquinioEnum: TipoSaquinio[];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.tipoSanquinioSelecionado = this.tipoSanquinioInput;
+  }
 
   constructor() {
     this.tipoSaquinioEnum = [
@@ -30,7 +39,7 @@ export class TipoSaquinioSelectComponent implements OnInit {
       { name: 'O-', value: 'O_NEGATIVO' }
     ];
 
-    this.tipoSanquinioSelecionado = { name: 'O-', value: 'O_NEGATIVO' };
+    // this.tipoSanquinioSelecionado = { name: 'O-', value: 'O_NEGATIVO' };
   }
 
   seuMetodo(ts: any) {

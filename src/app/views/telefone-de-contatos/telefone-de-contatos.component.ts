@@ -1,5 +1,7 @@
+import { Paretesco } from './../../models/Enum/paretesco';
+import { TipoSaquinio } from './../../models/Enum/tipoSanquinioEnum';
 import { ContatoDeEmergencia } from './../../models/contatoDeEmergencia.model';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { Message } from 'primeng/api';
 
@@ -10,25 +12,68 @@ import { Message } from 'primeng/api';
   providers: [ConfirmationService]
 })
 export class TelefoneDeContatosComponent implements OnInit {
+
+  paretescoSelecionado: Paretesco;
+  paretescoEnum: Paretesco[];
+
   displayModal = false;
 
   @Output() contatosDeEmergenciasOutput  = new EventEmitter<ContatoDeEmergencia[]>();
   
+  @Input() contatosDeEmergenciasInput: Array<ContatoDeEmergencia>;
+
   contatoDeEmergencia: ContatoDeEmergencia = new ContatoDeEmergencia();
 
   contatoDeEmergencias: ContatoDeEmergencia[] = [];
   idLinhaParaEdita: number;
   msgs: Message[] = [];
 
-  constructor(private confirmationService: ConfirmationService) {}
+  constructor(private confirmationService: ConfirmationService) { 
+    console.log("ARIEL LOPES VEIOOOO AQUIIIII")
+  
+    this.paretescoEnum = [
+      { name: 'Mãe', value: 'MAE', id: '1' },
+      { name: 'Pai', value: 'PAI', id: '2'  },
+      { name: 'Cônjuge', value: 'CONJUGE', id: '3' },
+      { name: 'Esposa', value: 'ESPOSA', id: '4' },
+      { name: 'Esposo', value: 'ESPOSO', id: '5' },
+      { name: 'Filho', value: 'FILHO', id: '6' },
+      { name: 'Filha', value: 'FILHA', id: '7' },
+      { name: 'Irmão', value: 'IRMAO', id: '8' },
+      { name: 'irmã', value: 'IRMA', id: '9' },
+      { name: 'Tia', value: 'TIA', id: '10' },
+      { name: 'Tio', value: 'TIO', id: '11' },
+      { name: 'Avô', value: 'AVO_H', id: '12' },
+      { name: 'Avó', value: 'AVO_M', id: '13' },
+      { name: 'Amigo', value: 'AMIGO', id: '14' },
+      { name: 'Amiga', value: 'AMIGA', id: '15' },
+      { name: 'Primo', value: 'PRIMO', id: '16' },
+      { name: 'Prima', value: 'PRIMA', id: '17' },
+      { name: 'Outros', value: 'OUTROS', id: '18' }
 
-  ngOnInit(): void {}
+    ];
+  }
+
+  ngOnInit(): void {
+    console.log("ARIEL LOPES VEIOOOO AQUIIIII")
+    this.contatoDeEmergencias = this.contatosDeEmergenciasInput;
+  }
 
   abrirModalCread() {
     this.displayModal = true;
   }
 
+  paretesco(paretescoSelecionado: Paretesco) {
+
+
+    this.contatoDeEmergencia.paretesco = this.paretescoSelecionado.value;
+    //console.log(paretescoSelecionado.value)
+  //  this.contatoDeEmergencia.paretesco(this.paretescoSelecionado.value);
+  }
+
   addContato() {
+    this.removerMascara();
+    
     this.contatoDeEmergencias.push(this.contatoDeEmergencia);
     this.contatoDeEmergencia = new ContatoDeEmergencia();
     this.displayModal = false;
@@ -85,5 +130,9 @@ export class TelefoneDeContatosComponent implements OnInit {
         ];
       }
     });
+  }
+
+  removerMascara(){
+    this.contatoDeEmergencia.numero = this.contatoDeEmergencia.numero.replace(/\D/gim, '');
   }
 }

@@ -1,11 +1,9 @@
-{{contatoDeEmergencia | json}}
 
-{{contatoDeEmergencias | json}}
-<h5>Default</h5>
+<!--<p-messages [value]="msgs"></p-messages>-->
+ 
 
-<p-messages [value]="msgs"></p-messages>
 <p-accordion>
-    <p-accordionTab header="Header I" [selected]="true">
+    <p-accordionTab header="Contatos emergência" [selected]="true">
         <div class="p-grid">
         <!-- 
         <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
@@ -51,35 +49,56 @@
         <!---->
         </div>
 
-        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+     <!--  <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog> -->
 
-        <p-dialog header="Compatibilidade" [(visible)]="displayModal" [modal]="true" [style]="{width: '90vw'}" [baseZIndex]="10000"
-        [draggable]="false" [resizable]="false">
+        <p-dialog header="Compatibilidade" position="top" [(visible)]="displayModal" [modal]="true" [style]="{width: '100%'}" [baseZIndex]="100000"
+        [draggable]="false" [resizable]="true" [showHeader]= "false" [maximizable]="true">
 
-
+<!--
             <div class="p-col-12 p-md-2 p-lg-2 p-float-label">
                 <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.id"> 
                 <label for="float-input">ID</label>
             </div>
-
+        -->
             <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
                 <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.nome"> 
                 <label for="float-input">Nome</label>
             </div>
 
+            <!--
             <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
                 <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.paretesco"> 
                 <label for="float-input">Paretesco</label>
             </div>
+             -->
 
+
+             <!--Select-->
+             <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
+             <p-dropdown  [options]="paretescoEnum" [style]="{'width':'100%'}" [(ngModel)]="paretescoSelecionado" optionLabel="name" 
+             [filter]="true" [showClear]="true" placeholder="Paretesco" (ngModelChange)="paretesco($event)">
+                
+                 <ng-template pTemplate="selectedItem" >
+                     <div class="paretesco-item paretesco-item-value"  *ngIf="paretescoSelecionado">
+                         <div>{{paretescoSelecionado.name}}</div>
+                     </div>
+                 </ng-template>
+                 <ng-template let-paretesco pTemplate="item">
+                     <div class="paretesco-item">
+                         <div>{{paretesco.value.name}}</div>
+                     </div>
+                 </ng-template>
+             </p-dropdown>
+             </div>
+             <!--  SELECT-->
             <div class="p-col-12 p-md-6 p-lg-6 p-float-label">
-                <input id="float-input" type="text" pInputText  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.numero"> 
+                <p-inputMask type="text"  [style]="{ 'width': '100%'}" [(ngModel)]="contatoDeEmergencia.numero" name="telefone" mask="(99)9999-99999" [style]="{ 'width': '100%'}"> </p-inputMask>
                 <label for="float-input">Numero</label>
             </div>
 
 
 
-            <ng-template pTemplate="footer">
+           <!-- <ng-template pTemplate="footer"> -->
                 <span class="p-buttonset">
                     <button pButton pRipple label="Salvar" icon="pi pi-check" (click)="addContato()"></button>
                 </span>
@@ -87,7 +106,7 @@
                     <button pButton pRipple label="Alterar" icon="pi pi-check" (click)="salvarAlteracao()"></button>
                 </span>
                 <p-button icon="pi  pi-check" (click)="displayModal=false" label="Ok" [style]="{'background':'#2196f3'}"></p-button>
-            </ng-template>
+         <!--   </ng-template> -->
         </p-dialog>
 
 
@@ -115,7 +134,6 @@
                             {{contato.nome}} <br> 
                         
                             {{contato.paretesco}}<br>
-                           
                             {{contato.numero}}<br>
                             <div class="p-grid p-jc-end">
                                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 " (click)="editarContatos(id)"></button>

@@ -1,5 +1,5 @@
 <p-dropdown [options]="estadoDeMoradia"  [style]="{'width':'100%'}" [(ngModel)]="selectedEstadoMoradia" 
- optionLabel="name" [filter]="true" [showClear]="true" placeholder="Select a Country" (ngModelChange)="funcaoEstadoDeMoradiaOutput($event)">
+ optionLabel="name" [filter]="true" [showClear]="true" placeholder="Estado de moradia" (ngModelChange)="funcaoEstadoDeMoradiaOutput($event)">
     <ng-template pTemplate="selectedItem">
         <div class="estadoMoradia-item estadoMoradia-item-value"  *ngIf="selectedEstadoMoradia">
             <img src="assets/estados/estado{{selectedEstadoMoradia.id}}.png" [class]="'flag flag-' + selectedEstadoMoradia.code.toLowerCase()" />
