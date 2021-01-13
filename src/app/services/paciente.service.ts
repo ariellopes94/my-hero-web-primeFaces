@@ -23,8 +23,11 @@ export class PacienteService {
   }
 
   fichaDoPaciente(numeroFichaPacienteUrl: string): Observable<FichaPacienteDTO> {
+
+    console.log("CHAMOU A API PARA PACIENTE");
     //const numeroFichaPaciente: string = window.location.href;
     return this.http.get<FichaPacienteDTO>(
+     
       `${API_CONFIG.baseUrl}/pacientes/fichaDoPaciente/${numeroFichaPacienteUrl}`
     );
     //XTR700

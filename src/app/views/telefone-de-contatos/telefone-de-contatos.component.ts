@@ -1,15 +1,14 @@
 import { Paretesco } from './../../models/Enum/paretesco';
-import { TipoSaquinio } from './../../models/Enum/tipoSanquinioEnum';
 import { ContatoDeEmergencia } from './../../models/contatoDeEmergencia.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-telefone-de-contatos',
   templateUrl: './telefone-de-contatos.component.html',
   styleUrls: ['./telefone-de-contatos.component.css'],
-  providers: [ConfirmationService]
+  providers: [ConfirmationService,MessageService]
 })
 export class TelefoneDeContatosComponent implements OnInit {
 
@@ -28,7 +27,10 @@ export class TelefoneDeContatosComponent implements OnInit {
   idLinhaParaEdita: number;
   msgs: Message[] = [];
 
-  constructor(private confirmationService: ConfirmationService) { 
+  //Controalr Modal
+  modalCriarUsuario : boolean = false;
+
+  constructor(private confirmationService: ConfirmationService, private messageService: MessageService) { 
     console.log("ARIEL LOPES VEIOOOO AQUIIIII")
   
     this.paretescoEnum = [
@@ -55,11 +57,11 @@ export class TelefoneDeContatosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("ARIEL LOPES VEIOOOO AQUIIIII")
     this.contatoDeEmergencias = this.contatosDeEmergenciasInput;
   }
 
   abrirModalCread() {
+    this.modalCriarUsuario = false;
     this.displayModal = true;
   }
 
@@ -98,6 +100,7 @@ export class TelefoneDeContatosComponent implements OnInit {
   }
 
   editarContatos(editContatoId) {
+    this.modalCriarUsuario = true;
     this.displayModal = true;
     this.idLinhaParaEdita = editContatoId;
 
@@ -114,11 +117,12 @@ export class TelefoneDeContatosComponent implements OnInit {
   }
 
   deletarConfirmar(id) {
+    alert("CLICKOU EM DELETAR ISSO MESMO");
     this.confirmationService.confirm({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',
-      icon: 'pi pi-info-circle',
-      accept: () => {
+      icon: 'pi pi-info-circle', 
+      accept: () => { alert("CLICKOU EM DELETAR ISSO MESMO");
         this.msgs = [
           { severity: 'info', summary: 'Confirmed', detail: 'Record deleted' }
         ];

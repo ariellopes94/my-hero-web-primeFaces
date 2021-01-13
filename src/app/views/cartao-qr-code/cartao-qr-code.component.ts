@@ -81,7 +81,7 @@ pdf.add(
 );
 
 pdf.add(
-  new QR(`http://myhero.com.br/${this.cartaoQrCode.codigoGeradoPeloSistema}`).fit(100).alignment('center').end
+  new QR(`https://myheroapp.com.br/ficha-paciente/${this.cartaoQrCode.codigoGeradoPeloSistema}`).fit(100).alignment('center').end
 )
 
 pdf.add(
